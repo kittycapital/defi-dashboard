@@ -28,6 +28,12 @@ jobs:
       - name: Fetch DeFi fees/revenue data
         run: python scripts/update_fees.py
       
+      - name: Fetch DEX volume data
+        run: python scripts/update_dexs.py
+      
+      - name: Fetch bridge flow data
+        run: python scripts/update_bridges.py
+      
       - name: Commit and push data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
