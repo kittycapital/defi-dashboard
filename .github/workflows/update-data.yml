@@ -1,43 +1,14 @@
-name: Update DeFi Dashboard Data
+name: Update Dashboard
 
 on:
   schedule:
-    # 7:00 AM KST = 22:00 UTC (previous day)
     - cron: '0 22 * * *'
-  workflow_dispatch:  # Manual trigger
-
-permissions:
-  contents: write
+  workflow_dispatch:
 
 jobs:
-  update-data:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
-        run: pip install requests
-      
-      - name: Fetch DeFi fees/revenue data
-        run: python scripts/update_fees.py
-      
-      - name: Fetch DEX volume data
-        run: python scripts/update_dexs.py
-      
-      - name: Fetch bridge flow data
-        run: python scripts/update_bridges.py
-      
-      - name: Commit and push data
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add data/
-          git diff --staged --quiet || git commit -m "Update DeFi data — $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+  update:
+    uses: kittycapital/shared-workflows/.github/workflows/python-fetch.yml@main
+    with:
+      script: fetch_data.py
+      requirements: requests
+    secrets: inherit
