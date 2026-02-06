@@ -9,6 +9,6 @@ jobs:
   update:
     uses: kittycapital/shared-workflows/.github/workflows/python-fetch.yml@main
     with:
-      script: fetch_data.py
+      script: fetch_all.py
       requirements: requests
     secrets: inherit
