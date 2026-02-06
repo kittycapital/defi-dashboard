@@ -284,6 +284,8 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -629,15 +631,28 @@
     }
 
     /* ── Responsive ── */
+    
+    /* Tablet */
     @media (max-width: 900px) {
       .header { padding: 20px 16px 0; }
-      .tabs { padding: 0 16px; overflow-x: auto; }
+      .tabs { 
+        padding: 0 16px; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
       .tab { padding: 10px 14px; font-size: 12px; white-space: nowrap; }
       .content { padding: 16px 16px 48px; }
       .summary-row { grid-template-columns: repeat(2, 1fr); }
       .summary-card .value { font-size: 18px; }
-      .table-wrapper { border-radius: 8px; }
-      .footer { padding: 16px; }
+      .table-wrapper { 
+        border-radius: 8px; 
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .footer { padding: 16px; flex-direction: column; gap: 8px; text-align: center; }
       .podium { gap: 8px; }
       .podium-bar { width: 80px; }
       .flow-grid { grid-template-columns: repeat(2, 1fr); }
@@ -645,15 +660,188 @@
       .hide-mobile { display: none !important; }
     }
 
+    /* Mobile */
     @media (max-width: 600px) {
-      .summary-row { grid-template-columns: 1fr 1fr; gap: 8px; }
-      .header-top { flex-direction: column; align-items: flex-start; gap: 8px; }
-      tbody td, thead th { padding: 10px 8px; font-size: 11px; }
-      .podium-item .name { font-size: 12px; }
-      .podium-bar { width: 60px; font-size: 20px; }
-      .podium-item:nth-child(1) .podium-bar { height: 70px; }
-      .podium-item:nth-child(2) .podium-bar { height: 100px; }
-      .podium-item:nth-child(3) .podium-bar { height: 50px; }
+      .header { padding: 16px 12px 0; }
+      .header-top { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 12px; 
+      }
+      .header-title h1 { font-size: 18px; }
+      .header-meta { font-size: 10px; }
+      
+      .tabs { 
+        padding: 0 12px; 
+        gap: 0;
+      }
+      .tab { 
+        padding: 12px 12px; 
+        font-size: 11px; 
+        flex: 1;
+        justify-content: center;
+        min-width: 0;
+      }
+      .tab-icon { font-size: 14px; }
+      
+      .content { padding: 12px 12px 32px; }
+      
+      .summary-row { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 8px; 
+      }
+      .summary-card { 
+        padding: 12px 14px; 
+        border-radius: 8px;
+      }
+      .summary-card .label { font-size: 10px; }
+      .summary-card .value { font-size: 16px; }
+      .summary-card .sub { font-size: 10px; }
+      
+      .controls { 
+        flex-direction: column; 
+        align-items: stretch; 
+        gap: 10px; 
+      }
+      .controls-left { 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .period-btn { 
+        padding: 10px 8px; 
+        font-size: 11px; 
+        text-align: center;
+      }
+      .controls-right { 
+        text-align: center; 
+        font-size: 10px;
+      }
+      
+      .table-wrapper { 
+        border-radius: 8px;
+        margin: 0 -12px;
+        width: calc(100% + 24px);
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+      }
+      
+      table { min-width: 500px; }
+      
+      thead th { 
+        padding: 10px 10px; 
+        font-size: 9px; 
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      tbody td { 
+        padding: 12px 10px; 
+        font-size: 12px; 
+      }
+      
+      .protocol-name { font-size: 12px; }
+      .trend-badge { 
+        padding: 2px 6px; 
+        font-size: 10px; 
+      }
+      .rank-1, .rank-2, .rank-3 {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+      }
+      
+      /* Podium - smaller on mobile */
+      .podium { 
+        gap: 6px; 
+        padding: 16px 0;
+        margin-bottom: 20px;
+      }
+      .podium-item { gap: 4px; }
+      .podium-item .name { font-size: 11px; }
+      .podium-item .volume { font-size: 10px; }
+      .podium-item .change { font-size: 9px; }
+      .podium-bar { 
+        width: 55px; 
+        font-size: 18px; 
+        padding-bottom: 8px;
+      }
+      .podium-item:nth-child(1) .podium-bar { height: 60px; }
+      .podium-item:nth-child(2) .podium-bar { height: 85px; }
+      .podium-item:nth-child(3) .podium-bar { height: 45px; }
+      
+      /* Flow grid - single column on small screens */
+      .flow-grid { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 8px;
+      }
+      .flow-card { 
+        padding: 12px; 
+        border-radius: 8px;
+      }
+      .flow-card .chain-name { font-size: 12px; }
+      .flow-card .tvl-row { font-size: 10px; }
+      .flow-card .flow-indicator { font-size: 11px; }
+      
+      .section-title { 
+        font-size: 12px; 
+        margin-bottom: 12px;
+      }
+      
+      .footer { 
+        padding: 12px; 
+        flex-direction: column; 
+        gap: 6px; 
+        text-align: center;
+        font-size: 9px;
+      }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 380px) {
+      .summary-row { 
+        grid-template-columns: 1fr; 
+      }
+      .flow-grid { 
+        grid-template-columns: 1fr; 
+      }
+      .tab { 
+        padding: 10px 8px; 
+        font-size: 10px;
+      }
+      .tab-icon { 
+        display: none; 
+      }
+    }
+    
+    /* Improve touch targets */
+    @media (hover: none) and (pointer: coarse) {
+      .tab, .period-btn {
+        min-height: 44px;
+      }
+      tbody tr {
+        min-height: 48px;
+      }
+    }
+    
+    /* Horizontal scroll indicator */
+    .table-wrapper {
+      position: relative;
+    }
+    
+    @media (max-width: 600px) {
+      .table-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 20px;
+        background: linear-gradient(to right, transparent, var(--bg-primary));
+        pointer-events: none;
+        opacity: 0.8;
+      }
     }
   </style>
 </head>
