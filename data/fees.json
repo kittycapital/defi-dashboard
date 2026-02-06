@@ -1,32 +1,886 @@
 {
-  "lastUpdated": "2026-02-05T04:00:00Z",
-  "lastUpdatedKST": "2026-02-05 13:00 KST",
-  "totalProtocols": 312,
+  "lastUpdated": "2026-02-06T00:03:42Z",
+  "lastUpdatedKST": "2026-02-06 09:03 KST",
+  "totalProtocols": 1131,
   "protocols": [
-    {"name": "Tether", "logo": "", "category": "Stablecoin", "chains": ["Ethereum", "Tron", "BSC"], "total24h": 2847500, "total7d": 18932000, "total30d": 78450000, "totalAllTime": 4250000000, "trend": 5.2, "slug": "tether"},
-    {"name": "Circle", "logo": "", "category": "Stablecoin", "chains": ["Ethereum", "Solana", "Arbitrum"], "total24h": 1923400, "total7d": 13280000, "total30d": 55700000, "totalAllTime": 2890000000, "trend": -2.1, "slug": "circle"},
-    {"name": "Lido", "logo": "", "category": "Liquid Staking", "chains": ["Ethereum"], "total24h": 1456000, "total7d": 9874000, "total30d": 41230000, "totalAllTime": 1780000000, "trend": 8.7, "slug": "lido"},
-    {"name": "Uniswap", "logo": "", "category": "DEX", "chains": ["Ethereum", "Polygon", "Arbitrum", "Base"], "total24h": 1234500, "total7d": 8950000, "total30d": 37800000, "totalAllTime": 3450000000, "trend": 12.3, "slug": "uniswap"},
-    {"name": "Aave", "logo": "", "category": "Lending", "chains": ["Ethereum", "Polygon", "Avalanche", "Arbitrum"], "total24h": 987600, "total7d": 6890000, "total30d": 28900000, "totalAllTime": 1560000000, "trend": 3.4, "slug": "aave"},
-    {"name": "MakerDAO", "logo": "", "category": "CDP", "chains": ["Ethereum"], "total24h": 876500, "total7d": 6120000, "total30d": 25600000, "totalAllTime": 1230000000, "trend": -1.8, "slug": "makerdao"},
-    {"name": "PancakeSwap", "logo": "", "category": "DEX", "chains": ["BSC", "Ethereum", "Arbitrum"], "total24h": 765400, "total7d": 5340000, "total30d": 22100000, "totalAllTime": 2100000000, "trend": 6.5, "slug": "pancakeswap"},
-    {"name": "Jito", "logo": "", "category": "Liquid Staking", "chains": ["Solana"], "total24h": 654300, "total7d": 4560000, "total30d": 19500000, "totalAllTime": 450000000, "trend": 22.1, "slug": "jito"},
-    {"name": "Raydium", "logo": "", "category": "DEX", "chains": ["Solana"], "total24h": 598700, "total7d": 4210000, "total30d": 17800000, "totalAllTime": 780000000, "trend": 15.8, "slug": "raydium"},
-    {"name": "GMX", "logo": "", "category": "Derivatives", "chains": ["Arbitrum", "Avalanche"], "total24h": 534200, "total7d": 3780000, "total30d": 15600000, "totalAllTime": 920000000, "trend": -5.3, "slug": "gmx"},
-    {"name": "dYdX", "logo": "", "category": "Derivatives", "chains": ["dYdX"], "total24h": 487600, "total7d": 3420000, "total30d": 14200000, "totalAllTime": 1120000000, "trend": 1.2, "slug": "dydx"},
-    {"name": "Convex Finance", "logo": "", "category": "Yield", "chains": ["Ethereum"], "total24h": 423100, "total7d": 2960000, "total30d": 12300000, "totalAllTime": 670000000, "trend": -3.7, "slug": "convex-finance"},
-    {"name": "Curve DEX", "logo": "", "category": "DEX", "chains": ["Ethereum", "Polygon", "Arbitrum"], "total24h": 389500, "total7d": 2730000, "total30d": 11400000, "totalAllTime": 1450000000, "trend": 2.9, "slug": "curve-dex"},
-    {"name": "Aerodrome", "logo": "", "category": "DEX", "chains": ["Base"], "total24h": 356800, "total7d": 2490000, "total30d": 10500000, "totalAllTime": 320000000, "trend": 18.4, "slug": "aerodrome"},
-    {"name": "Jupiter", "logo": "", "category": "DEX Aggregator", "chains": ["Solana"], "total24h": 312400, "total7d": 2180000, "total30d": 9200000, "totalAllTime": 410000000, "trend": 9.6, "slug": "jupiter"},
-    {"name": "Compound", "logo": "", "category": "Lending", "chains": ["Ethereum", "Base", "Arbitrum"], "total24h": 278900, "total7d": 1950000, "total30d": 8100000, "totalAllTime": 890000000, "trend": -0.5, "slug": "compound"},
-    {"name": "Morpho", "logo": "", "category": "Lending", "chains": ["Ethereum", "Base"], "total24h": 245300, "total7d": 1720000, "total30d": 7200000, "totalAllTime": 210000000, "trend": 31.2, "slug": "morpho"},
-    {"name": "Orca", "logo": "", "category": "DEX", "chains": ["Solana"], "total24h": 213600, "total7d": 1490000, "total30d": 6200000, "totalAllTime": 560000000, "trend": 7.8, "slug": "orca"},
-    {"name": "SynFutures", "logo": "", "category": "Derivatives", "chains": ["Blast"], "total24h": 198400, "total7d": 1380000, "total30d": 5800000, "totalAllTime": 180000000, "trend": -8.2, "slug": "synfutures"},
-    {"name": "EigenLayer", "logo": "", "category": "Restaking", "chains": ["Ethereum"], "total24h": 176500, "total7d": 1230000, "total30d": 5100000, "totalAllTime": 290000000, "trend": 14.5, "slug": "eigenlayer"}
+    {
+      "name": "Tether",
+      "logo": "https://icons.llamao.fi/icons/protocols/tether.png",
+      "category": "Stablecoin Issuer",
+      "chains": [
+        "Off Chain"
+      ],
+      "total24h": 16461449,
+      "total7d": 115380825,
+      "total30d": 493126263,
+      "totalAllTime": 18003951111,
+      "trend": -0.1,
+      "module": "tether",
+      "slug": "tether"
+    },
+    {
+      "name": "Aave V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/aave-v3.png",
+      "category": "Lending",
+      "chains": [
+        "Ethereum",
+        "OP Mainnet",
+        "Arbitrum",
+        "Polygon",
+        "Avalanche",
+        "Fantom",
+        "Base",
+        "BSC",
+        "Metis",
+        "Gnosis",
+        "Scroll",
+        "ZKsync Era",
+        "Linea",
+        "Sonic",
+        "Celo",
+        "Soneium",
+        "Plasma"
+      ],
+      "total24h": 6256776,
+      "total7d": 26239933,
+      "total30d": 73890106,
+      "totalAllTime": 1341134949,
+      "trend": 66.9,
+      "module": "aave-v3",
+      "slug": "aave-v3"
+    },
+    {
+      "name": "Circle",
+      "logo": "https://icons.llamao.fi/icons/protocols/circle.png",
+      "category": "Stablecoin Issuer",
+      "chains": [
+        "Off Chain"
+      ],
+      "total24h": 6102540,
+      "total7d": 42624258,
+      "total30d": 189470732,
+      "totalAllTime": 6205895377,
+      "trend": 0.2,
+      "module": "circle",
+      "slug": "circle"
+    },
+    {
+      "name": "Ethena USDe",
+      "logo": "https://icons.llamao.fi/icons/protocols/ethena-usde.png",
+      "category": "Basis Trading",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 4530504,
+      "total7d": 6274805,
+      "total30d": 23541809,
+      "totalAllTime": 917261873,
+      "trend": 405.4,
+      "module": "ethena",
+      "slug": "ethena-usde"
+    },
+    {
+      "name": "Hyperliquid Perps",
+      "logo": "https://icons.llamao.fi/icons/protocols/hyperliquid.png",
+      "category": "Derivatives",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 3989263,
+      "total7d": 28330528,
+      "total30d": 78893959,
+      "totalAllTime": 994718983,
+      "trend": -1.4,
+      "module": "hyperliquid-perp",
+      "slug": "hyperliquid-perps"
+    },
+    {
+      "name": "Jupiter Perpetual Exchange",
+      "logo": "https://icons.llamao.fi/icons/protocols/jupiter-perpetual-exchange.jpg",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 3869549,
+      "total7d": 21037357,
+      "total30d": 51928170,
+      "totalAllTime": 1272047869,
+      "trend": 28.8,
+      "module": "jupiter-perpetual",
+      "slug": "jupiter-perpetual-exchange"
+    },
+    {
+      "name": "PumpSwap",
+      "logo": "https://icons.llamao.fi/icons/protocols/pumpswap.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 2066565,
+      "total7d": 17240983,
+      "total30d": 73671658,
+      "totalAllTime": 454983719,
+      "trend": -16.1,
+      "module": "pump-swap",
+      "slug": "pumpswap"
+    },
+    {
+      "name": "Uniswap V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/uniswap-v3.png",
+      "category": "Dexs",
+      "chains": [
+        "Arbitrum",
+        "Base",
+        "Unichain",
+        "X Layer",
+        "Avalanche",
+        "World Chain",
+        "Plasma",
+        "Blast",
+        "Ethereum",
+        "OP Mainnet",
+        "Polygon",
+        "ZKsync Era",
+        "Sei",
+        "Taiko",
+        "Scroll",
+        "Rootstock",
+        "Filecoin",
+        "Boba",
+        "Mantle",
+        "Linea",
+        "Gnosis",
+        "BOB",
+        "Corn",
+        "GOAT",
+        "BSC",
+        "Hemi",
+        "XDC",
+        "LightLink",
+        "Telos",
+        "Celo",
+        "Nibiru",
+        "Monad",
+        "Sonic",
+        "Etherlink",
+        "Saga",
+        "Lens"
+      ],
+      "total24h": 2027729,
+      "total7d": 14436409,
+      "total30d": 37489183,
+      "totalAllTime": 3415108619,
+      "trend": -1.7,
+      "module": "uniswap-v3",
+      "slug": "uniswap-v3"
+    },
+    {
+      "name": "Aster Perps",
+      "logo": "https://icons.llamao.fi/icons/protocols/aster-perps.jpg",
+      "category": "Derivatives",
+      "chains": [
+        "Off Chain"
+      ],
+      "total24h": 1751717,
+      "total7d": 8192211,
+      "total30d": 28701772,
+      "totalAllTime": 425830632,
+      "trend": 49.7,
+      "module": "apollox",
+      "slug": "aster-perps"
+    },
+    {
+      "name": "Lido",
+      "logo": "https://icons.llamao.fi/icons/protocols/lido.png",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 1616174,
+      "total7d": 9864473,
+      "total30d": 58089395,
+      "totalAllTime": 3029298241,
+      "trend": 14.7,
+      "module": "lido",
+      "slug": "lido"
+    },
+    {
+      "name": "edgeX Perps",
+      "logo": "https://icons.llamao.fi/icons/protocols/edgex-perps.jpg",
+      "category": "Derivatives",
+      "chains": [
+        "edgeX"
+      ],
+      "total24h": 1460624,
+      "total7d": 10130127,
+      "total30d": 30404012,
+      "totalAllTime": 257162318,
+      "trend": 0.9,
+      "module": "edgex",
+      "slug": "edgex-perps"
+    },
+    {
+      "name": "clanker",
+      "logo": "https://icons.llamao.fi/icons/protocols/clanker.jpg",
+      "category": "Launchpad",
+      "chains": [
+        "Base"
+      ],
+      "total24h": 1344169,
+      "total7d": 13651439,
+      "total30d": 16188821,
+      "totalAllTime": 52681132,
+      "trend": -31.1,
+      "module": "clanker",
+      "slug": "clanker"
+    },
+    {
+      "name": "Chainlink Staking",
+      "logo": "https://icons.llamao.fi/icons/protocols/chainlink-staking.jpg",
+      "category": "Staking Pool",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 1114673,
+      "total7d": 1145245,
+      "total30d": 4572738,
+      "totalAllTime": 29840320,
+      "trend": 581.3,
+      "module": "chainlink",
+      "slug": "chainlink-staking"
+    },
+    {
+      "name": "Sky Lending",
+      "logo": "https://icons.llamao.fi/icons/protocols/sky-lending.jpg",
+      "category": "CDP",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 1112428,
+      "total7d": 7792099,
+      "total30d": 33763371,
+      "totalAllTime": 1013568176,
+      "trend": -0.1,
+      "module": "makerdao",
+      "slug": "sky-lending"
+    },
+    {
+      "name": "Fragment",
+      "logo": "https://icons.llamao.fi/icons/protocols/fragment.jpg",
+      "category": "NFT Marketplace",
+      "chains": [
+        "TON"
+      ],
+      "total24h": 1094731,
+      "total7d": 4236470,
+      "total30d": 26065582,
+      "totalAllTime": 485873769,
+      "trend": 80.9,
+      "module": "fragment",
+      "slug": "fragment"
+    },
+    {
+      "name": "Uniswap V4",
+      "logo": "https://icons.llamao.fi/icons/protocols/uniswap-v4.png",
+      "category": "Dexs",
+      "chains": [
+        "Ethereum",
+        "Unichain",
+        "OP Mainnet",
+        "Base",
+        "Arbitrum",
+        "Polygon",
+        "Blast",
+        "Zora",
+        "World Chain",
+        "Ink",
+        "Soneium",
+        "Avalanche",
+        "BSC",
+        "Monad",
+        "X Layer"
+      ],
+      "total24h": 1074043,
+      "total7d": 14356114,
+      "total30d": 27755217,
+      "totalAllTime": 171878308,
+      "trend": -47.6,
+      "module": "uniswap-v4",
+      "slug": "uniswap-v4"
+    },
+    {
+      "name": "Tron",
+      "logo": "https://icons.llamao.fi/icons/chains/rsz_tron.jpg",
+      "category": "Chain",
+      "chains": [
+        "Tron"
+      ],
+      "total24h": 1048099,
+      "total7d": 7459918,
+      "total30d": 29267651,
+      "totalAllTime": 1920371101,
+      "trend": -1.7,
+      "module": "tron",
+      "slug": "tron"
+    },
+    {
+      "name": "pump.fun",
+      "logo": "https://icons.llamao.fi/icons/protocols/pump.fun.jpg",
+      "category": "Launchpad",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 1000711,
+      "total7d": 7929646,
+      "total30d": 32299394,
+      "totalAllTime": 906208329,
+      "trend": -11.7,
+      "module": "pumpdotfun",
+      "slug": "pump.fun"
+    },
+    {
+      "name": "Raydium AMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/raydium.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 972767,
+      "total7d": 4306467,
+      "total30d": 13695706,
+      "totalAllTime": 1373402474,
+      "trend": 58.1,
+      "module": "raydium",
+      "slug": "raydium-amm"
+    },
+    {
+      "name": "Maple",
+      "logo": "https://icons.llamao.fi/icons/protocols/maple.png",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 923163,
+      "total7d": 7947412,
+      "total30d": 11741711,
+      "totalAllTime": 96380764,
+      "trend": -18.7,
+      "module": "maple-finance",
+      "slug": "maple"
+    },
+    {
+      "name": "Morpho V1",
+      "logo": "https://icons.llamao.fi/icons/protocols/morpho-v1.png",
+      "category": "Lending",
+      "chains": [
+        "Ethereum",
+        "Base",
+        "Polygon",
+        "Unichain",
+        "Katana",
+        "Arbitrum",
+        "Fraxtal",
+        "Ink",
+        "OP Mainnet",
+        "Scroll",
+        "World Chain",
+        "Mode",
+        "Corn",
+        "Hemi",
+        "Sonic",
+        "Hyperliquid L1",
+        "Soneium",
+        "Zircuit",
+        "Monad"
+      ],
+      "total24h": 880335,
+      "total7d": 5747543,
+      "total30d": 15920190,
+      "totalAllTime": 229545701,
+      "trend": 7.2,
+      "module": "morpho",
+      "slug": "morpho-v1"
+    },
+    {
+      "name": "Solana",
+      "logo": "https://icons.llamao.fi/icons/chains/rsz_solana.jpg",
+      "category": "Chain",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 842875,
+      "total7d": 6930800,
+      "total30d": 29915535,
+      "totalAllTime": 1469953018,
+      "trend": -14.9,
+      "module": "solana",
+      "slug": "solana"
+    },
+    {
+      "name": "Flashbots",
+      "logo": "https://icons.llamao.fi/icons/protocols/flashbots.png",
+      "category": "MEV",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 826093,
+      "total7d": 9106282,
+      "total30d": 18247942,
+      "totalAllTime": 1548304267,
+      "trend": -36.5,
+      "module": "flashbot",
+      "slug": "flashbots"
+    },
+    {
+      "name": "Meteora DLMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/meteora.png",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 666414,
+      "total7d": 3966527,
+      "total30d": 31950874,
+      "totalAllTime": 946137271,
+      "trend": 17.6,
+      "module": "meteora-dlmm",
+      "slug": "meteora-dlmm"
+    },
+    {
+      "name": "Grayscale",
+      "logo": "https://icons.llamao.fi/icons/protocols/grayscale.jpg",
+      "category": "RWA",
+      "chains": [
+        "Off Chain"
+      ],
+      "total24h": 638904,
+      "total7d": 5160139,
+      "total30d": 24655531,
+      "totalAllTime": 44269430,
+      "trend": -13.3,
+      "module": "grayscale",
+      "slug": "grayscale"
+    },
+    {
+      "name": "Binance staked ETH",
+      "logo": "https://icons.llamao.fi/icons/protocols/binance-staked-eth.png",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum",
+        "BSC"
+      ],
+      "total24h": 556732,
+      "total7d": 5257855,
+      "total30d": 24892567,
+      "totalAllTime": 415036932,
+      "trend": -25.9,
+      "module": "binance-staked-eth",
+      "slug": "binance-staked-eth"
+    },
+    {
+      "name": "Base",
+      "logo": "https://icons.llamao.fi/icons/chains/rsz_base.jpg",
+      "category": "Chain",
+      "chains": [
+        "Base"
+      ],
+      "total24h": 547911,
+      "total7d": 4691886,
+      "total30d": 7533086,
+      "totalAllTime": 187150169,
+      "trend": -18.3,
+      "module": "base",
+      "slug": "base"
+    },
+    {
+      "name": "Axiom",
+      "logo": "https://icons.llamao.fi/icons/protocols/axiom.jpg",
+      "category": "Trading App",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 475259,
+      "total7d": 3262336,
+      "total30d": 15463122,
+      "totalAllTime": 381281409,
+      "trend": 2.0,
+      "module": "axiom",
+      "slug": "axiom"
+    },
+    {
+      "name": "Orca DEX",
+      "logo": "https://icons.llamao.fi/icons/protocols/orca-dex.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana",
+        "Eclipse"
+      ],
+      "total24h": 475061,
+      "total7d": 1918047,
+      "total30d": 6287544,
+      "totalAllTime": 200221172,
+      "trend": 73.4,
+      "module": "orca",
+      "slug": "orca-dex"
+    },
+    {
+      "name": "Phantom Wallet",
+      "logo": "https://icons.llamao.fi/icons/protocols/phantom-wallet.jpg",
+      "category": "Wallets",
+      "chains": [
+        "Solana",
+        "Ethereum",
+        "Base",
+        "Polygon"
+      ],
+      "total24h": 469059,
+      "total7d": 3498020,
+      "total30d": 14009331,
+      "totalAllTime": 517623138,
+      "trend": -6.1,
+      "module": "phantom",
+      "slug": "phantom-wallet"
+    },
+    {
+      "name": "Metronome Synth",
+      "logo": "https://icons.llamao.fi/icons/protocols/metronome-synth.jpg",
+      "category": "Synthetics",
+      "chains": [
+        "Ethereum",
+        "Base",
+        "OP Mainnet"
+      ],
+      "total24h": 453476,
+      "total7d": 1340112,
+      "total30d": 2453102,
+      "totalAllTime": 10657045,
+      "trend": 136.9,
+      "module": "metronome-synth",
+      "slug": "metronome-synth"
+    },
+    {
+      "name": "Ostium",
+      "logo": "https://icons.llamao.fi/icons/protocols/ostium.png",
+      "category": "Derivatives",
+      "chains": [
+        "Arbitrum"
+      ],
+      "total24h": 451829,
+      "total7d": 1191949,
+      "total30d": 2600418,
+      "totalAllTime": 15467078,
+      "trend": 165.3,
+      "module": "ostium",
+      "slug": "ostium"
+    },
+    {
+      "name": "BSC",
+      "logo": "https://icons.llamao.fi/icons/chains/rsz_binance.jpg",
+      "category": "Chain",
+      "chains": [
+        "BSC"
+      ],
+      "total24h": 415402,
+      "total7d": 3431852,
+      "total30d": 20195287,
+      "totalAllTime": 1981834521,
+      "trend": -15.3,
+      "module": "bsc",
+      "slug": "bsc"
+    },
+    {
+      "name": "Curve DEX",
+      "logo": "https://icons.llamao.fi/icons/protocols/curve.png",
+      "category": "Dexs",
+      "chains": [
+        "Ethereum",
+        "Arbitrum",
+        "OP Mainnet",
+        "Avalanche",
+        "Polygon",
+        "Base",
+        "Gnosis",
+        "Fraxtal",
+        "Sonic",
+        "Hyperliquid L1",
+        "Plasma",
+        "Celo",
+        "Ink",
+        "Mantle",
+        "Unichain",
+        "Monad",
+        "Stable"
+      ],
+      "total24h": 390189,
+      "total7d": 3313781,
+      "total30d": 7358992,
+      "totalAllTime": 364779402,
+      "trend": -17.6,
+      "module": "curve",
+      "slug": "curve-dex"
+    },
+    {
+      "name": "Meteora DAMM V2",
+      "logo": "https://icons.llamao.fi/icons/protocols/meteora-damm-v2.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 376813,
+      "total7d": 2144356,
+      "total30d": 46068183,
+      "totalAllTime": 230488884,
+      "trend": 23.0,
+      "module": "meteora-damm-v2",
+      "slug": "meteora-damm-v2"
+    },
+    {
+      "name": "PancakeSwap AMM V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/pancakeswap-amm-v3.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana",
+        "BSC",
+        "Ethereum",
+        "Polygon zkEVM",
+        "ZKsync Era",
+        "Arbitrum",
+        "Linea",
+        "Base",
+        "opBNB",
+        "Monad"
+      ],
+      "total24h": 356777,
+      "total7d": 2387857,
+      "total30d": 9876216,
+      "totalAllTime": 608679475,
+      "trend": 4.6,
+      "module": "pancakeswap-v3",
+      "slug": "pancakeswap-amm-v3"
+    },
+    {
+      "name": "tradeXYZ",
+      "logo": "https://icons.llamao.fi/icons/protocols/tradexyz.jpg",
+      "category": "Interface",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 316445,
+      "total7d": 2700891,
+      "total30d": 5227058,
+      "totalAllTime": 8417020,
+      "trend": -18.0,
+      "module": "tradexyz",
+      "slug": "tradexyz"
+    },
+    {
+      "name": "Defi Saver",
+      "logo": "https://icons.llamao.fi/icons/protocols/defi-saver.jpg",
+      "category": "CDP Manager",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 296748,
+      "total7d": 961695,
+      "total30d": 1140247,
+      "totalAllTime": 19149581,
+      "trend": 116.0,
+      "module": "defi-saver",
+      "slug": "defi-saver"
+    },
+    {
+      "name": "ether.fi Liquid",
+      "logo": "https://icons.llamao.fi/icons/protocols/ether.fi.jpg",
+      "category": "Onchain Capital Allocator",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 291165,
+      "total7d": 3413357,
+      "total30d": 16810441,
+      "totalAllTime": 311578162,
+      "trend": -40.3,
+      "module": "ether-fi",
+      "slug": "ether.fi-liquid"
+    },
+    {
+      "name": "Hyperliquid Spot Orderbook",
+      "logo": "https://icons.llamao.fi/icons/protocols/hyperliquid.png",
+      "category": "Dexs",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 291087,
+      "total7d": 1265302,
+      "total30d": 2874585,
+      "totalAllTime": 49910199,
+      "trend": 61.0,
+      "module": "hyperliquid",
+      "slug": "hyperliquid-spot-orderbook"
+    },
+    {
+      "name": "Jito MEV Tips",
+      "logo": "https://icons.llamao.fi/icons/protocols/jito-mev-tips.jpg",
+      "category": "MEV",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 290511,
+      "total7d": 2476684,
+      "total30d": 10068493,
+      "totalAllTime": 1410648556,
+      "trend": -17.9,
+      "module": "jito-mev-tips",
+      "slug": "jito-mev-tips"
+    },
+    {
+      "name": "Spark Liquidity Layer",
+      "logo": "https://icons.llamao.fi/icons/protocols/spark-liquidity-layer.jpg",
+      "category": "Onchain Capital Allocator",
+      "chains": [
+        "Ethereum"
+      ],
+      "total24h": 285422,
+      "total7d": 2089943,
+      "total30d": 9430957,
+      "totalAllTime": 93690693,
+      "trend": -4.4,
+      "module": "spark-liquidity-layer",
+      "slug": "spark-liquidity-layer"
+    },
+    {
+      "name": "GMGN",
+      "logo": "https://icons.llamao.fi/icons/protocols/gmgn.jpg",
+      "category": "Telegram Bot",
+      "chains": [
+        "BSC",
+        "Solana"
+      ],
+      "total24h": 250816,
+      "total7d": 1869475,
+      "total30d": 16340471,
+      "totalAllTime": 111479428,
+      "trend": -6.1,
+      "module": "gmgnai",
+      "slug": "gmgn"
+    },
+    {
+      "name": "ADEN",
+      "logo": "https://icons.llamao.fi/icons/protocols/aden.jpg",
+      "category": "Interface",
+      "chains": [
+        "GateLayer",
+        "Orderly Network",
+        "Off Chain"
+      ],
+      "total24h": 245030,
+      "total7d": 698183,
+      "total30d": 1627443,
+      "totalAllTime": 5446320,
+      "trend": 145.7,
+      "module": "aden",
+      "slug": "aden"
+    },
+    {
+      "name": "Project X",
+      "logo": "https://icons.llamao.fi/icons/protocols/project-x.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 243545,
+      "total7d": 1185870,
+      "total30d": 2489986,
+      "totalAllTime": 24903381,
+      "trend": 43.8,
+      "module": "prjx",
+      "slug": "project-x"
+    },
+    {
+      "name": "Bitcoin",
+      "logo": "https://icons.llamao.fi/icons/chains/rsz_bitcoin.jpg",
+      "category": "Chain",
+      "chains": [
+        "Bitcoin"
+      ],
+      "total24h": 233933,
+      "total7d": 986783,
+      "total30d": 6267386,
+      "totalAllTime": 4397665267,
+      "trend": 65.9,
+      "module": "bitcoin",
+      "slug": "bitcoin"
+    },
+    {
+      "name": "Extended",
+      "logo": "https://icons.llamao.fi/icons/protocols/extended.jpg",
+      "category": "Derivatives",
+      "chains": [
+        "Starknet"
+      ],
+      "total24h": 230985,
+      "total7d": 2031969,
+      "total30d": 6253399,
+      "totalAllTime": 17393245,
+      "trend": -20.4,
+      "module": "extended",
+      "slug": "extended"
+    },
+    {
+      "name": "NEAR Intents",
+      "logo": "https://icons.llamao.fi/icons/protocols/near-intents.jpg",
+      "category": "Cross Chain Bridge",
+      "chains": [
+        "Near"
+      ],
+      "total24h": 229994,
+      "total7d": 1183973,
+      "total30d": 4497775,
+      "totalAllTime": 19791362,
+      "trend": 36.0,
+      "module": "near-intents",
+      "slug": "near-intents"
+    },
+    {
+      "name": "Lighter Perps",
+      "logo": "https://icons.llamao.fi/icons/protocols/lighter-perps.jpg",
+      "category": "Derivatives",
+      "chains": [
+        "zkLighter"
+      ],
+      "total24h": 224677,
+      "total7d": 1925772,
+      "total30d": 5857094,
+      "totalAllTime": 47007295,
+      "trend": -18.3,
+      "module": "lighterv2",
+      "slug": "lighter-perps"
+    },
+    {
+      "name": "CoWSwap",
+      "logo": "https://icons.llamao.fi/icons/protocols/cowswap.jpg",
+      "category": "DEX Aggregator",
+      "chains": [
+        "Ethereum",
+        "Arbitrum",
+        "Base",
+        "Gnosis",
+        "Avalanche",
+        "Polygon",
+        "Lens"
+      ],
+      "total24h": 214835,
+      "total7d": 1718315,
+      "total30d": 3767133,
+      "totalAllTime": 46048473,
+      "trend": -12.5,
+      "module": "cow-protocol",
+      "slug": "cowswap"
+    }
   ],
   "summary": {
     "top1_name": "Tether",
-    "top1_24h": 2847500,
-    "total_24h_top20": 14769700
+    "top1_24h": 16461449,
+    "total_24h_top20": 59817674
   }
 }
