@@ -14,4 +14,4 @@ for script in scripts:
         print(f"❌ {script} failed")
         sys.exit(1)
 
-print("\n✅ All scripts completed")
+print("\n✅ All scripts completed") 
