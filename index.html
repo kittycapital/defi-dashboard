@@ -682,8 +682,8 @@
       DEX 거래량
     </button>
     <button class="tab" data-tab="bridge" onclick="switchTab('bridge')">
-      <span class="tab-icon">🌉</span>
-      브릿지 흐름
+      <span class="tab-icon">⛓️</span>
+      체인 TVL
     </button>
   </nav>
 
@@ -801,45 +801,45 @@
       </div>
     </section>
 
-    <!-- TAB 3: Bridge Flows -->
+    <!-- TAB 3: Chain TVL Flows -->
     <section id="panel-bridge" class="tab-panel">
       <div class="summary-row">
         <div class="summary-card">
-          <div class="label">🌉 1위 브릿지</div>
+          <div class="label">🥇 TVL 1위 체인</div>
           <div class="value" id="bridge-top1-name">—</div>
           <div class="sub" id="bridge-top1-vol"></div>
         </div>
         <div class="summary-card">
-          <div class="label">전체 브릿지 거래량 (24H)</div>
+          <div class="label">전체 TVL</div>
           <div class="value" id="bridge-total24h">—</div>
-          <div class="sub">모든 브릿지 합계</div>
+          <div class="sub">추적 체인 합계</div>
         </div>
         <div class="summary-card">
-          <div class="label">총 브릿지 수</div>
+          <div class="label">추적 체인 수</div>
           <div class="value" id="bridge-count">—</div>
-          <div class="sub">활성 브릿지 기준</div>
+          <div class="sub">TVL $100M+ 기준</div>
         </div>
         <div class="summary-card">
-          <div class="label">자금 유입 1위 체인</div>
+          <div class="label">7일 자금 유입 1위</div>
           <div class="value" id="bridge-inflow-chain">—</div>
           <div class="sub" id="bridge-inflow-amount"></div>
         </div>
       </div>
 
-      <div class="section-title">⛓️ 체인별 자금 흐름 (7일)</div>
+      <div class="section-title">⛓️ 체인별 TVL 변화 (7일)</div>
       <div class="flow-grid" id="chain-flow-grid"></div>
 
-      <div class="section-title">🏆 브릿지 거래량 순위</div>
+      <div class="section-title">📊 체인 TVL 순위</div>
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
               <th>#</th>
-              <th>브릿지</th>
-              <th>24H 거래량</th>
-              <th class="hide-mobile">7D 거래량</th>
-              <th class="hide-mobile">30D 거래량</th>
-              <th>지원 체인</th>
+              <th>체인</th>
+              <th>현재 TVL</th>
+              <th class="hide-mobile">7일 전 TVL</th>
+              <th>7일 변화</th>
+              <th class="hide-mobile">변화율</th>
             </tr>
           </thead>
           <tbody id="bridge-tbody">
@@ -1015,23 +1015,24 @@
       }
     }
 
-    // ═══ TAB 3: BRIDGES ═══
+    // ═══ TAB 3: CHAIN TVL ═══
     function renderBridgeFlows() {
       const flows = bridgesData.chainFlows || [];
       const maxFlow = Math.max(...flows.map(f => Math.abs(f.netFlow7d || 0)), 1);
 
-      document.getElementById('chain-flow-grid').innerHTML = flows.map(f => {
+      document.getElementById('chain-flow-grid').innerHTML = flows.slice(0, 12).map(f => {
         const isInflow = (f.netFlow7d || 0) >= 0;
         const cls = isInflow ? 'inflow' : 'outflow';
         const arrow = isInflow ? '↑' : '↓';
         const absFlow = Math.abs(f.netFlow7d || 0);
-        const barW = (absFlow / maxFlow) * 100;
+        const barW = maxFlow > 0 ? (absFlow / maxFlow) * 100 : 0;
+        const pct = f.change7dPct || 0;
 
         return `
           <div class="flow-card">
             <div class="chain-name">${f.chain}</div>
             <div class="tvl-row"><span>TVL</span><span>${fmtUSD(f.tvl)}</span></div>
-            <div class="flow-indicator ${cls}">${arrow} ${fmtUSD(absFlow)} (7D)</div>
+            <div class="flow-indicator ${cls}">${arrow} ${fmtUSD(absFlow)} (${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)</div>
             <div class="flow-bar-container"><div class="flow-bar ${cls}" style="width:${barW}%"></div></div>
           </div>
         `;
@@ -1039,35 +1040,38 @@
     }
 
     function renderBridgeTable() {
-      const bridges = bridgesData.bridges || [];
-      document.getElementById('bridge-tbody').innerHTML = bridges.slice(0, 15).map((b, i) => `
+      const flows = bridgesData.chainFlows || [];
+      document.getElementById('bridge-tbody').innerHTML = flows.map((f, i) => {
+        const pct = f.change7dPct || 0;
+        const pctClass = pct >= 0 ? 'up' : 'down';
+        return `
         <tr>
           <td>${rankBadge(i + 1)}</td>
-          <td><div class="protocol-name">${b.name}</div></td>
-          <td>${fmtUSD(b.volume24h)}</td>
-          <td class="hide-mobile">${fmtUSD(b.volume7d)}</td>
-          <td class="hide-mobile">${fmtUSD(b.volume30d)}</td>
-          <td style="font-size:10px;color:var(--text-secondary);">${chainList(b.chains, 4)}</td>
+          <td><div class="protocol-name">${f.chain}</div></td>
+          <td>${fmtUSD(f.tvl)}</td>
+          <td class="hide-mobile">${fmtUSD(f.tvl7dAgo)}</td>
+          <td>${trendBadge(pct)}</td>
+          <td class="hide-mobile" style="font-size:11px;color:var(--text-secondary);">${f.netFlow7d >= 0 ? '+' : ''}${fmtUSD(f.netFlow7d)}</td>
         </tr>
-      `).join('');
+      `}).join('');
     }
 
     function renderBridgeSummary() {
       const s = bridgesData.summary || {};
-      const bridges = bridgesData.bridges || [];
       const flows = bridgesData.chainFlows || [];
 
-      if (bridges.length > 0) {
-        document.getElementById('bridge-top1-name').textContent = s.top1_name || bridges[0].name;
-        document.getElementById('bridge-top1-vol').textContent = fmtUSD(s.top1_24h || bridges[0].volume24h) + ' (24H)';
+      if (flows.length > 0) {
+        document.getElementById('bridge-top1-name').textContent = s.top1_name || flows[0].chain;
+        document.getElementById('bridge-top1-vol').textContent = fmtUSD(s.top1_tvl || flows[0].tvl);
       }
-      document.getElementById('bridge-total24h').textContent = fmtUSD(s.total_24h || 0);
-      document.getElementById('bridge-count').textContent = bridgesData.totalBridges || '—';
+      document.getElementById('bridge-total24h').textContent = fmtUSD(s.total_tvl || 0);
+      document.getElementById('bridge-count').textContent = bridgesData.totalChains || flows.length || '—';
 
       const inflows = flows.filter(f => (f.netFlow7d || 0) > 0).sort((a, b) => b.netFlow7d - a.netFlow7d);
       if (inflows.length > 0) {
         document.getElementById('bridge-inflow-chain').textContent = inflows[0].chain;
-        document.getElementById('bridge-inflow-amount').textContent = '+' + fmtUSD(inflows[0].netFlow7d) + ' (7D)';
+        const pct = inflows[0].change7dPct || 0;
+        document.getElementById('bridge-inflow-amount').textContent = '+' + fmtUSD(inflows[0].netFlow7d) + ` (+${pct.toFixed(1)}%)`;
         document.getElementById('bridge-inflow-amount').style.color = 'var(--accent-green)';
       }
     }
