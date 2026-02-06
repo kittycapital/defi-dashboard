@@ -1283,6 +1283,31 @@
     }
 
     loadAllData();
+    
+    // ═══ IFRAME AUTO-RESIZE ═══
+    function sendHeight() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({ type: 'resize', height: height }, '*');
+    }
+    
+    // Send height on load and when content changes
+    window.addEventListener('load', () => {
+      sendHeight();
+      // Send again after data loads
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 2000);
+    });
+    
+    // Send height when tab changes
+    const originalSwitchTab = switchTab;
+    switchTab = function(tabId) {
+      originalSwitchTab(tabId);
+      setTimeout(sendHeight, 100);
+    };
+    
+    // Observe content changes
+    const resizeObserver = new ResizeObserver(() => sendHeight());
+    resizeObserver.observe(document.body);
   </script>
 </body>
 </html>
