@@ -8,13 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-card: #111118;
-      --bg-card-hover: #16161f;
-      --bg-tab: #1a1a24;
-      --bg-tab-active: #0a0a0f;
-      --border: #1e1e2a;
-      --border-bright: #2a2a3a;
+      --bg-primary: #000000;
+      --bg-card: #0a0a0a;
+      --bg-card-hover: #111111;
+      --bg-tab: #0a0a0a;
+      --bg-tab-active: #000000;
+      --border: #1a1a1a;
+      --border-bright: #2a2a2a;
       --text-primary: #e8e8f0;
       --text-secondary: #7a7a8e;
       --text-dim: #4a4a5e;
@@ -42,16 +42,6 @@
       font-family: var(--font-kr);
       min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    /* ── Noise overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
     }
 
     /* ── Header ── */
@@ -302,7 +292,7 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       text-align: right;
-      background: var(--bg-card);
+      background: #050505;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
@@ -838,7 +828,7 @@
         right: 0;
         bottom: 0;
         width: 20px;
-        background: linear-gradient(to right, transparent, var(--bg-primary));
+        background: linear-gradient(to right, transparent, #000000);
         pointer-events: none;
         opacity: 0.8;
       }
