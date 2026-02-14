@@ -84,6 +84,12 @@
       -webkit-text-fill-color: transparent;
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     .header-meta {
       display: flex;
       align-items: center;
@@ -105,6 +111,43 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
+
+    /* ── Share Buttons ── */
+    .share-buttons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .share-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .share-btn:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-1px);
+    }
+
+    .share-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .share-btn.x-btn:hover { border-color: #fff; }
+    .share-btn.kakao-btn:hover { border-color: #FEE500; }
+    .share-btn.telegram-btn:hover { border-color: #26A5E4; }
+    .share-btn.instagram-btn:hover { border-color: #E4405F; }
+    .share-btn.link-btn:hover { border-color: var(--accent-green); }
 
     /* ── Tabs ── */
     .tabs {
@@ -133,9 +176,7 @@
       position: relative;
     }
 
-    .tab:hover {
-      color: var(--text-secondary);
-    }
+    .tab:hover { color: var(--text-secondary); }
 
     .tab.active {
       color: var(--accent-green);
@@ -152,9 +193,7 @@
       border-bottom-color: var(--accent-orange);
     }
 
-    .tab-icon {
-      font-size: 15px;
-    }
+    .tab-icon { font-size: 15px; }
 
     /* ── Main content ── */
     .content {
@@ -168,9 +207,7 @@
       animation: fadeIn 0.3s ease;
     }
 
-    .tab-panel.active {
-      display: block;
-    }
+    .tab-panel.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -193,9 +230,7 @@
       transition: border-color 0.2s;
     }
 
-    .summary-card:hover {
-      border-color: var(--border-bright);
-    }
+    .summary-card:hover { border-color: var(--border-bright); }
 
     .summary-card .label {
       font-size: 11px;
@@ -228,10 +263,7 @@
       margin-bottom: 16px;
     }
 
-    .controls-left {
-      display: flex;
-      gap: 4px;
-    }
+    .controls-left { display: flex; gap: 4px; }
 
     .period-btn {
       padding: 6px 14px;
@@ -276,6 +308,7 @@
       overflow: hidden;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      position: relative;
     }
 
     table {
@@ -298,27 +331,16 @@
       top: 0;
     }
 
-    thead th:first-child {
-      text-align: left;
-      width: 50px;
-    }
-
-    thead th:nth-child(2) {
-      text-align: left;
-    }
+    thead th:first-child { text-align: left; width: 50px; }
+    thead th:nth-child(2) { text-align: left; }
 
     tbody tr {
       border-bottom: 1px solid var(--border);
       transition: background 0.12s;
     }
 
-    tbody tr:hover {
-      background: var(--bg-card-hover);
-    }
-
-    tbody tr:last-child {
-      border-bottom: none;
-    }
+    tbody tr:hover { background: var(--bg-card-hover); }
+    tbody tr:last-child { border-bottom: none; }
 
     tbody td {
       padding: 14px 16px;
@@ -335,11 +357,8 @@
       font-weight: 600;
     }
 
-    tbody td:nth-child(2) {
-      text-align: left;
-    }
+    tbody td:nth-child(2) { text-align: left; }
 
-    /* Rank badges for top 3 */
     .rank-1, .rank-2, .rank-3 {
       display: inline-flex;
       align-items: center;
@@ -359,6 +378,29 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .protocol-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--border-bright);
+      flex-shrink: 0;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      overflow: hidden;
+    }
+
+    .protocol-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .protocol-name {
@@ -407,66 +449,264 @@
       color: var(--accent-red);
     }
 
-    /* ── Podium (DEX Tab) ── */
-    .podium {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 12px;
-      margin-bottom: 32px;
-      padding: 24px 0;
+    .trend-up { color: var(--accent-green); }
+    .trend-down { color: var(--accent-red); }
+
+    /* ── Horizontal Bar Chart (TVL) ── */
+    .bar-chart-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
     }
 
-    .podium-item {
+    .bar-chart-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .bar-chart-row:last-child { border-bottom: none; }
+
+    .bar-chart-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .bar-chart-label .chain-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border-bright);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+
+    .bar-chart-label .chain-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bar-chart-label .name {
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bar-chart-track {
+      flex: 1;
+      height: 28px;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-chart-bar-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 4px;
+      opacity: 0.2;
+      transition: width 0.6s ease;
+    }
+
+    .bar-chart-bar-fg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 4px;
+      opacity: 0.7;
+      transition: width 0.6s ease;
+    }
+
+    .bar-chart-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 200px;
+      flex-shrink: 0;
+      justify-content: flex-end;
+    }
+
+    .bar-chart-value .tvl {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .bar-chart-value .change {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .bar-chart-value .change.up {
+      color: var(--accent-green);
+      background: var(--accent-green-dim);
+    }
+
+    .bar-chart-value .change.down {
+      color: var(--accent-red);
+      background: var(--accent-red-dim);
+    }
+
+    /* ── Donut Chart (DEX) ── */
+    .donut-chart-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .donut-container {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      flex-shrink: 0;
+    }
+
+    .donut-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .donut-center .label {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .donut-center .value {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .donut-legend {
+      flex: 1;
       display: flex;
       flex-direction: column;
+      gap: 8px;
+    }
+
+    .donut-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+
+    .donut-legend-item:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .legend-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border-bright);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+
+    .legend-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .legend-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .legend-name {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .legend-data {
+      display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .podium-item .name {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .podium-item .volume {
+    .legend-vol {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 11px;
       color: var(--text-secondary);
     }
 
-    .podium-item .change {
+    .legend-share {
       font-family: var(--font-mono);
       font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
     }
 
-    .podium-bar {
-      width: 100px;
-      border-radius: 8px 8px 0 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 12px;
-      font-size: 28px;
-      font-weight: 900;
-      color: rgba(0,0,0,0.6);
+    .legend-change {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 3px;
     }
 
-    .podium-item:nth-child(1) .podium-bar { /* 2nd place */
-      height: 100px;
-      background: linear-gradient(180deg, #b8c4d0, #8a96a4);
-    }
-    .podium-item:nth-child(2) .podium-bar { /* 1st place */
-      height: 140px;
-      background: linear-gradient(180deg, #f0b840, #e09520);
-    }
-    .podium-item:nth-child(3) .podium-bar { /* 3rd place */
-      height: 70px;
-      background: linear-gradient(180deg, #cd7f32, #a0612a);
+    .legend-change.up {
+      color: var(--accent-green);
+      background: var(--accent-green-dim);
     }
 
-    .trend-up { color: var(--accent-green); }
-    .trend-down { color: var(--accent-red); }
+    .legend-change.down {
+      color: var(--accent-red);
+      background: var(--accent-red-dim);
+    }
 
     /* ── Chain Flow Cards (Bridge Tab) ── */
     .flow-grid {
@@ -489,10 +729,37 @@
       transform: translateY(-2px);
     }
 
+    .flow-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
     .flow-card .chain-name {
       font-weight: 700;
       font-size: 13px;
-      margin-bottom: 8px;
+    }
+
+    .flow-card .flow-logo {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--border-bright);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+
+    .flow-card .flow-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .flow-card .tvl-row {
@@ -513,13 +780,8 @@
       font-weight: 600;
     }
 
-    .flow-card .flow-indicator.inflow {
-      color: var(--accent-green);
-    }
-
-    .flow-card .flow-indicator.outflow {
-      color: var(--accent-red);
-    }
+    .flow-card .flow-indicator.inflow { color: var(--accent-green); }
+    .flow-card .flow-indicator.outflow { color: var(--accent-red); }
 
     .flow-bar-container {
       height: 4px;
@@ -535,13 +797,8 @@
       transition: width 0.5s ease;
     }
 
-    .flow-bar.inflow {
-      background: var(--accent-green);
-    }
-
-    .flow-bar.outflow {
-      background: var(--accent-red);
-    }
+    .flow-bar.inflow { background: var(--accent-green); }
+    .flow-bar.outflow { background: var(--accent-red); }
 
     /* ── Section Title ── */
     .section-title {
@@ -559,6 +816,24 @@
       flex: 1;
       height: 1px;
       background: var(--border);
+    }
+
+    /* ── Market Share Bar ── */
+    .share-bar-container {
+      width: 60px;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .share-bar {
+      height: 100%;
+      background: var(--accent-purple);
+      border-radius: 3px;
     }
 
     /* ── Footer ── */
@@ -602,224 +877,143 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Market Share Bar ── */
-    .share-bar-container {
-      width: 60px;
-      height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
-
-    .share-bar {
-      height: 100%;
-      background: var(--accent-purple);
-      border-radius: 3px;
-    }
-
     /* ── Responsive ── */
-    
-    /* Tablet */
     @media (max-width: 900px) {
       .header { padding: 20px 16px 0; }
-      .tabs { 
-        padding: 0 16px; 
-        overflow-x: auto; 
+      .tabs {
+        padding: 0 16px;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        -ms-overflow-style: none;
       }
       .tabs::-webkit-scrollbar { display: none; }
       .tab { padding: 10px 14px; font-size: 12px; white-space: nowrap; }
       .content { padding: 16px 16px 48px; }
       .summary-row { grid-template-columns: repeat(2, 1fr); }
       .summary-card .value { font-size: 18px; }
-      .table-wrapper { 
-        border-radius: 8px; 
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
+      .table-wrapper { border-radius: 8px; }
       .footer { padding: 16px; flex-direction: column; gap: 8px; text-align: center; }
-      .podium { gap: 8px; }
-      .podium-bar { width: 80px; }
       .flow-grid { grid-template-columns: repeat(2, 1fr); }
-      
       .hide-mobile { display: none !important; }
+
+      .donut-chart-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .donut-container {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+
+      .bar-chart-label { width: 110px; }
+      .bar-chart-value { width: 160px; }
+      .bar-chart-label .name { font-size: 11px; }
     }
 
-    /* Mobile */
     @media (max-width: 600px) {
       .header { padding: 16px 12px 0; }
-      .header-top { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        gap: 12px; 
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
       }
       .header-title h1 { font-size: 18px; }
       .header-meta { font-size: 10px; }
-      
-      .tabs { 
-        padding: 0 12px; 
-        gap: 0;
-      }
-      .tab { 
-        padding: 12px 12px; 
-        font-size: 11px; 
+      .share-buttons { gap: 4px; }
+      .share-btn { width: 28px; height: 28px; }
+      .share-btn svg { width: 14px; height: 14px; }
+
+      .tabs { padding: 0 12px; gap: 0; }
+      .tab {
+        padding: 12px 12px;
+        font-size: 11px;
         flex: 1;
         justify-content: center;
         min-width: 0;
       }
       .tab-icon { font-size: 14px; }
-      
       .content { padding: 12px 12px 32px; }
-      
-      .summary-row { 
-        grid-template-columns: 1fr 1fr; 
-        gap: 8px; 
-      }
-      .summary-card { 
-        padding: 12px 14px; 
-        border-radius: 8px;
-      }
+
+      .summary-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .summary-card { padding: 12px 14px; border-radius: 8px; }
       .summary-card .label { font-size: 10px; }
       .summary-card .value { font-size: 16px; }
       .summary-card .sub { font-size: 10px; }
-      
-      .controls { 
-        flex-direction: column; 
-        align-items: stretch; 
-        gap: 10px; 
+
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
       }
-      .controls-left { 
+      .controls-left {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 6px;
       }
-      .period-btn { 
-        padding: 10px 8px; 
-        font-size: 11px; 
-        text-align: center;
-      }
-      .controls-right { 
-        text-align: center; 
-        font-size: 10px;
-      }
-      
-      .table-wrapper { 
-        border-radius: 8px;
+      .period-btn { padding: 10px 8px; font-size: 11px; text-align: center; }
+      .controls-right { text-align: center; font-size: 10px; }
+
+      .table-wrapper {
         margin: 0 -12px;
         width: calc(100% + 24px);
         border-left: none;
         border-right: none;
         border-radius: 0;
       }
-      
       table { min-width: 500px; }
-      
-      thead th { 
-        padding: 10px 10px; 
-        font-size: 9px; 
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      tbody td { 
-        padding: 12px 10px; 
-        font-size: 12px; 
-      }
-      
+      thead th { padding: 10px 10px; font-size: 9px; z-index: 10; }
+      tbody td { padding: 12px 10px; font-size: 12px; }
+
       .protocol-name { font-size: 12px; }
-      .trend-badge { 
-        padding: 2px 6px; 
-        font-size: 10px; 
-      }
-      .rank-1, .rank-2, .rank-3 {
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
-      }
-      
-      /* Podium - smaller on mobile */
-      .podium { 
-        gap: 6px; 
-        padding: 16px 0;
-        margin-bottom: 20px;
-      }
-      .podium-item { gap: 4px; }
-      .podium-item .name { font-size: 11px; }
-      .podium-item .volume { font-size: 10px; }
-      .podium-item .change { font-size: 9px; }
-      .podium-bar { 
-        width: 55px; 
-        font-size: 18px; 
-        padding-bottom: 8px;
-      }
-      .podium-item:nth-child(1) .podium-bar { height: 60px; }
-      .podium-item:nth-child(2) .podium-bar { height: 85px; }
-      .podium-item:nth-child(3) .podium-bar { height: 45px; }
-      
-      /* Flow grid - single column on small screens */
-      .flow-grid { 
-        grid-template-columns: 1fr 1fr; 
-        gap: 8px;
-      }
-      .flow-card { 
-        padding: 12px; 
-        border-radius: 8px;
-      }
+      .protocol-logo { width: 20px; height: 20px; }
+      .trend-badge { padding: 2px 6px; font-size: 10px; }
+      .rank-1, .rank-2, .rank-3 { width: 20px; height: 20px; font-size: 10px; }
+
+      .bar-chart-section { padding: 12px; }
+      .bar-chart-label { width: 90px; }
+      .bar-chart-label .chain-logo { width: 18px; height: 18px; }
+      .bar-chart-label .name { font-size: 10px; }
+      .bar-chart-track { height: 22px; }
+      .bar-chart-value { width: 130px; gap: 4px; }
+      .bar-chart-value .tvl { font-size: 10px; }
+      .bar-chart-value .change { font-size: 9px; }
+      .bar-chart-row { gap: 6px; padding: 5px 0; }
+
+      .donut-container { width: 180px; height: 180px; }
+      .donut-center .value { font-size: 16px; }
+      .legend-name { font-size: 11px; }
+      .legend-vol { font-size: 10px; }
+      .legend-share { font-size: 10px; }
+
+      .flow-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .flow-card { padding: 12px; border-radius: 8px; }
       .flow-card .chain-name { font-size: 12px; }
       .flow-card .tvl-row { font-size: 10px; }
       .flow-card .flow-indicator { font-size: 11px; }
-      
-      .section-title { 
-        font-size: 12px; 
-        margin-bottom: 12px;
-      }
-      
-      .footer { 
-        padding: 12px; 
-        flex-direction: column; 
-        gap: 6px; 
-        text-align: center;
-        font-size: 9px;
-      }
+
+      .section-title { font-size: 12px; margin-bottom: 12px; }
+      .footer { padding: 12px; flex-direction: column; gap: 6px; text-align: center; font-size: 9px; }
     }
-    
-    /* Extra small screens */
+
     @media (max-width: 380px) {
-      .summary-row { 
-        grid-template-columns: 1fr; 
-      }
-      .flow-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .tab { 
-        padding: 10px 8px; 
-        font-size: 10px;
-      }
-      .tab-icon { 
-        display: none; 
-      }
+      .summary-row { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; }
+      .tab { padding: 10px 8px; font-size: 10px; }
+      .tab-icon { display: none; }
+      .bar-chart-label { width: 70px; }
+      .bar-chart-value { width: 100px; }
     }
-    
-    /* Improve touch targets */
+
     @media (hover: none) and (pointer: coarse) {
-      .tab, .period-btn {
-        min-height: 44px;
-      }
-      tbody tr {
-        min-height: 48px;
-      }
+      .tab, .period-btn { min-height: 44px; }
+      tbody tr { min-height: 48px; }
     }
-    
-    /* Horizontal scroll indicator */
-    .table-wrapper {
-      position: relative;
-    }
-    
+
     @media (max-width: 600px) {
       .table-wrapper::after {
         content: '';
@@ -843,23 +1037,47 @@
         <div class="icon">◈</div>
         <h1>DeFi 대시보드</h1>
       </div>
-      <div class="header-meta">
-        <div class="update-dot"></div>
-        <span id="lastUpdated">데이터 로딩 중...</span>
+      <div class="header-right">
+        <div class="header-meta">
+          <div class="update-dot"></div>
+          <span id="lastUpdated">데이터 로딩 중...</span>
+        </div>
+        <div class="share-buttons">
+          <!-- X (Twitter) -->
+          <a class="share-btn x-btn" href="#" onclick="shareX()" title="X에 공유">
+            <svg viewBox="0 0 24 24" fill="#e8e8f0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Kakao -->
+          <a class="share-btn kakao-btn" href="#" onclick="shareKakao()" title="카카오톡 공유">
+            <svg viewBox="0 0 24 24" fill="#FEE500"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.726 1.8 5.117 4.512 6.48-.148.538-.952 3.463-.985 3.678 0 0-.02.166.088.229.108.063.235.03.235.03.31-.044 3.588-2.34 4.157-2.741.646.092 1.308.14 1.993.14 5.523 0 10-3.463 10-7.691S17.523 3 12 3z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a class="share-btn telegram-btn" href="#" onclick="shareTelegram()" title="텔레그램 공유">
+            <svg viewBox="0 0 24 24" fill="#26A5E4"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a class="share-btn instagram-btn" href="https://www.instagram.com" target="_blank" title="인스타그램">
+            <svg viewBox="0 0 24 24" fill="#E4405F"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <!-- Link Copy -->
+          <a class="share-btn link-btn" href="#" onclick="copyLink()" title="링크 복사">
+            <svg viewBox="0 0 24 24" fill="#7a7a8e"><path d="M13.828 10.172a4 4 0 0 0-5.656 0l-4 4a4 4 0 1 0 5.656 5.656l1.102-1.101m-.758-4.899a4 4 0 0 0 5.656 0l4-4a4 4 0 0 0-5.656-5.656l-1.1 1.1" stroke="#7a7a8e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="revenue" onclick="switchTab('revenue')">
+    <button class="tab" data-tab="revenue" onclick="switchTab('revenue')">
       <span class="tab-icon">📊</span>
       수익 랭킹
     </button>
     <button class="tab" data-tab="dex" onclick="switchTab('dex')">
       <span class="tab-icon">⚔️</span>
-      DEX 거래량
+      DEX 현물 거래량
     </button>
-    <button class="tab" data-tab="bridge" onclick="switchTab('bridge')">
+    <button class="tab active" data-tab="bridge" onclick="switchTab('bridge')">
       <span class="tab-icon">⛓️</span>
       체인 TVL
     </button>
@@ -868,7 +1086,7 @@
   <main class="content">
 
     <!-- TAB 1: Revenue -->
-    <section id="panel-revenue" class="tab-panel active">
+    <section id="panel-revenue" class="tab-panel">
       <div class="summary-row">
         <div class="summary-card">
           <div class="label">🏆 1위 프로토콜</div>
@@ -922,7 +1140,7 @@
       </div>
     </section>
 
-    <!-- TAB 2: DEX Volume -->
+    <!-- TAB 2: DEX Spot Volume -->
     <section id="panel-dex" class="tab-panel">
       <div class="summary-row">
         <div class="summary-card">
@@ -931,9 +1149,9 @@
           <div class="sub" id="dex-top1-vol"></div>
         </div>
         <div class="summary-card">
-          <div class="label">전체 DEX 거래량 (24H)</div>
+          <div class="label">전체 현물 거래량 (24H)</div>
           <div class="value" id="dex-total24h">—</div>
-          <div class="sub">모든 DEX 합계</div>
+          <div class="sub">모든 DEX Spot 합계</div>
         </div>
         <div class="summary-card">
           <div class="label">총 DEX 수</div>
@@ -947,8 +1165,17 @@
         </div>
       </div>
 
-      <div class="section-title">🏆 TOP 3 DEX 거래량 전쟁</div>
-      <div class="podium" id="dex-podium"></div>
+      <div class="section-title">🍩 DEX 점유율 현황</div>
+      <div class="donut-chart-section">
+        <div class="donut-container">
+          <canvas id="dex-donut-canvas" width="240" height="240"></canvas>
+          <div class="donut-center">
+            <div class="label">24H 총 거래량</div>
+            <div class="value" id="donut-total">—</div>
+          </div>
+        </div>
+        <div class="donut-legend" id="dex-donut-legend"></div>
+      </div>
 
       <div class="controls">
         <div class="controls-left">
@@ -979,8 +1206,8 @@
       </div>
     </section>
 
-    <!-- TAB 3: Chain TVL Flows -->
-    <section id="panel-bridge" class="tab-panel">
+    <!-- TAB 3: Chain TVL -->
+    <section id="panel-bridge" class="tab-panel active">
       <div class="summary-row">
         <div class="summary-card">
           <div class="label">🥇 TVL 1위 체인</div>
@@ -1004,10 +1231,13 @@
         </div>
       </div>
 
+      <div class="section-title">📊 체인 TVL 비교 (Top 15)</div>
+      <div class="bar-chart-section" id="tvl-bar-chart"></div>
+
       <div class="section-title">⛓️ 체인별 TVL 변화 (7일)</div>
       <div class="flow-grid" id="chain-flow-grid"></div>
 
-      <div class="section-title">📊 체인 TVL 순위</div>
+      <div class="section-title">📋 체인 TVL 순위</div>
       <div class="table-wrapper">
         <table>
           <thead>
@@ -1041,13 +1271,42 @@
     let bridgesData = { bridges: [], chainFlows: [] };
     let currentPeriod = '24h';
     let currentDexPeriod = '24h';
+    const SHARE_URL = 'https://herdvibe.com/47';
+    const SHARE_TITLE = 'DeFi 대시보드 — 수익 · 거래량 · 자금흐름';
+
+    // ═══ SHARE FUNCTIONS ═══
+    function shareX() {
+      const text = encodeURIComponent(SHARE_TITLE);
+      const url = encodeURIComponent(SHARE_URL);
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareKakao() {
+      const url = encodeURIComponent(SHARE_URL);
+      window.open(`https://story.kakao.com/share?url=${url}`, '_blank');
+    }
+
+    function shareTelegram() {
+      const text = encodeURIComponent(SHARE_TITLE);
+      const url = encodeURIComponent(SHARE_URL);
+      window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(SHARE_URL).then(() => {
+        const btn = document.querySelector('.link-btn');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#00e599" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(() => { btn.innerHTML = orig; }, 1500);
+      });
+    }
 
     // ═══ UTILS ═══
     function fmtUSD(n) {
       if (n === null || n === undefined) return '—';
-      if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
-      if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
-      if (n >= 1e3) return '$' + (n / 1e3).toFixed(1) + 'K';
+      if (Math.abs(n) >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n / 1e3).toFixed(1) + 'K';
       return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
     }
 
@@ -1072,6 +1331,33 @@
       const shown = chains.slice(0, max).join(', ');
       if (chains.length > max) return shown + ` +${chains.length - max}`;
       return shown;
+    }
+
+    // ═══ LOGO HELPERS ═══
+    function getChainLogoUrl(chain) {
+      const slug = chain.toLowerCase().replace(/\s+/g, '');
+      return `https://icons.llama.fi/chains/rsz_${slug}.jpg`;
+    }
+
+    function getProtocolLogoUrl(name) {
+      const slug = name.toLowerCase().replace(/\s+/g, '-');
+      return `https://icons.llama.fi/${slug}.jpg`;
+    }
+
+    function logoHtml(url, name, size) {
+      const sz = size || 24;
+      const initial = (name || '?').charAt(0).toUpperCase();
+      return `<img src="${url}" alt="${name}" width="${sz}" height="${sz}" style="border-radius:50%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;width:${sz}px;height:${sz}px;border-radius:50%;background:var(--border-bright);align-items:center;justify-content:center;font-size:${Math.floor(sz*0.4)}px;font-weight:700;color:var(--text-dim);flex-shrink:0">${initial}</span>`;
+    }
+
+    function protocolLogoCell(name, chains, logoUrl) {
+      return `<div class="protocol-cell">
+        <div class="protocol-logo">${logoHtml(logoUrl || getProtocolLogoUrl(name), name, 24)}</div>
+        <div>
+          <div class="protocol-name">${name}</div>
+          <div class="protocol-chains">${chainDots(chains)}</div>
+        </div>
+      </div>`;
     }
 
     // ═══ TAB SWITCH ═══
@@ -1112,7 +1398,7 @@
       tbody.innerHTML = top20.map((p, i) => `
         <tr>
           <td>${rankBadge(i + 1)}</td>
-          <td><div class="protocol-cell"><div><div class="protocol-name">${p.name}</div><div class="protocol-chains">${chainDots(p.chains)}</div></div></div></td>
+          <td>${protocolLogoCell(p.name, p.chains)}</td>
           <td>${fmtUSD(getFeesVal(p))}</td>
           <td class="hide-mobile">${fmtUSD(p.total7d)}</td>
           <td class="hide-mobile">${fmtUSD(p.total30d)}</td>
@@ -1123,10 +1409,16 @@
     }
 
     // ═══ TAB 2: DEX ═══
+    const DONUT_COLORS = [
+      '#a855f7', '#3b82f6', '#00e599', '#f0b840', '#ff4466',
+      '#f97316', '#06b6d4', '#ec4899', '#8b5cf6', '#10b981'
+    ];
+
     function setDexPeriod(period) {
       currentDexPeriod = period;
       document.querySelectorAll('.period-btn[data-dex-period]').forEach(b => b.classList.remove('active'));
       document.querySelector(`[data-dex-period="${period}"]`).classList.add('active');
+      renderDexDonut();
       renderDexTable();
     }
 
@@ -1135,20 +1427,99 @@
       return map[currentDexPeriod] || 0;
     }
 
-    function renderDexPodium() {
-      const top3 = dexsData.dexs.slice(0, 3);
-      if (top3.length < 3) return;
-      const order = [top3[1], top3[0], top3[2]];
-      const medals = ['🥈', '🥇', '🥉'];
+    function renderDexDonut() {
+      const canvas = document.getElementById('dex-donut-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, rect.width, rect.height);
 
-      document.getElementById('dex-podium').innerHTML = order.map((d, i) => {
-        const cls = (d.change1d || 0) >= 0 ? 'trend-up' : 'trend-down';
+      const sorted = [...dexsData.dexs].sort((a, b) => getDexVal(b) - getDexVal(a));
+      const topN = 7;
+      const topDexs = sorted.slice(0, topN);
+      const othersVol = sorted.slice(topN).reduce((sum, d) => sum + getDexVal(d), 0);
+      const totalVol = sorted.reduce((sum, d) => sum + getDexVal(d), 0);
+
+      if (totalVol === 0) return;
+
+      const periodLabels = { '24h': '24H', '7d': '7D', '30d': '30D' };
+      document.getElementById('donut-total').textContent = fmtUSD(totalVol);
+      document.querySelector('.donut-center .label').textContent = `${periodLabels[currentDexPeriod]} 총 거래량`;
+
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const outerR = Math.min(cx, cy) - 4;
+      const innerR = outerR * 0.62;
+
+      const segments = topDexs.map((d, i) => ({
+        name: d.displayName || d.name,
+        value: getDexVal(d),
+        color: DONUT_COLORS[i % DONUT_COLORS.length],
+        change: d.change1d,
+        slug: d.name
+      }));
+      if (othersVol > 0) {
+        segments.push({ name: '기타', value: othersVol, color: '#2a2a3a', change: null, slug: null });
+      }
+
+      let angle = -Math.PI / 2;
+      segments.forEach(seg => {
+        const sweep = (seg.value / totalVol) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, outerR, angle, angle + sweep);
+        ctx.closePath();
+        ctx.fillStyle = seg.color;
+        ctx.fill();
+        angle += sweep;
+      });
+
+      // Inner circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fill();
+
+      // Thin gap lines
+      angle = -Math.PI / 2;
+      segments.forEach(seg => {
+        const sweep = (seg.value / totalVol) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(angle) * outerR, cy + Math.sin(angle) * outerR);
+        ctx.strokeStyle = '#0a0a0a';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        angle += sweep;
+      });
+
+      // Legend
+      const legend = document.getElementById('dex-donut-legend');
+      legend.innerHTML = segments.map(seg => {
+        const share = ((seg.value / totalVol) * 100).toFixed(1);
+        const changeHtml = seg.change !== null && seg.change !== undefined
+          ? `<span class="legend-change ${seg.change >= 0 ? 'up' : 'down'}">${seg.change >= 0 ? '▲' : '▼'}${Math.abs(seg.change).toFixed(1)}%</span>`
+          : '';
+        const logoSrc = seg.slug ? getProtocolLogoUrl(seg.slug) : null;
+        const logoContent = logoSrc
+          ? `<div class="legend-logo">${logoHtml(logoSrc, seg.name, 22)}</div>`
+          : `<div class="legend-logo" style="background:${seg.color};font-size:9px;">+</div>`;
         return `
-          <div class="podium-item">
-            <div class="name">${d.name}</div>
-            <div class="volume">${fmtUSD(d.total24h)}</div>
-            <div class="change ${cls}">${d.change1d >= 0 ? '+' : ''}${(d.change1d || 0).toFixed(1)}%</div>
-            <div class="podium-bar">${medals[i]}</div>
+          <div class="donut-legend-item">
+            <span class="legend-color" style="background:${seg.color}"></span>
+            ${logoContent}
+            <div class="legend-info">
+              <span class="legend-name">${seg.name}</span>
+              <div class="legend-data">
+                <span class="legend-vol">${fmtUSD(seg.value)}</span>
+                <span class="legend-share">${share}%</span>
+                ${changeHtml}
+              </div>
+            </div>
           </div>
         `;
       }).join('');
@@ -1166,7 +1537,7 @@
         return `
           <tr>
             <td>${rankBadge(i + 1)}</td>
-            <td><div class="protocol-cell"><div><div class="protocol-name">${d.displayName || d.name}</div><div class="protocol-chains">${chainDots(d.chains)}</div></div></div></td>
+            <td>${protocolLogoCell(d.displayName || d.name, d.chains, getProtocolLogoUrl(d.name))}</td>
             <td>${fmtUSD(vol)}</td>
             <td class="hide-mobile"><span class="share-bar-container"><span class="share-bar" style="width:${share}%"></span></span>${share}%</td>
             <td>${trendBadge(d.change1d)}</td>
@@ -1194,6 +1565,51 @@
     }
 
     // ═══ TAB 3: CHAIN TVL ═══
+    function renderTvlBarChart() {
+      const flows = bridgesData.chainFlows || [];
+      const top15 = flows.slice(0, 15);
+      if (top15.length === 0) return;
+
+      const maxTvl = Math.max(...top15.map(f => Math.max(f.tvl || 0, f.tvl7dAgo || 0)));
+      // Log scale: map values to visual width
+      const logScale = (val) => {
+        if (val <= 0) return 0;
+        const logMax = Math.log10(maxTvl);
+        const logMin = Math.log10(Math.max(top15[top15.length - 1]?.tvl || 1e6, 1e6));
+        const logVal = Math.log10(val);
+        const pct = ((logVal - logMin) / (logMax - logMin)) * 100;
+        return Math.max(pct, 2);
+      };
+
+      const container = document.getElementById('tvl-bar-chart');
+      container.innerHTML = top15.map(f => {
+        const pct = f.change7dPct || 0;
+        const isUp = pct >= 0;
+        const barColor = isUp ? 'var(--accent-green)' : 'var(--accent-red)';
+        const bgColor = isUp ? 'rgba(0,229,153,0.15)' : 'rgba(255,68,102,0.15)';
+        const fgW = logScale(f.tvl);
+        const bgW = logScale(f.tvl7dAgo || f.tvl);
+        const logoUrl = getChainLogoUrl(f.chain);
+
+        return `
+          <div class="bar-chart-row">
+            <div class="bar-chart-label">
+              <div class="chain-logo">${logoHtml(logoUrl, f.chain, 22)}</div>
+              <span class="name">${f.chain}</span>
+            </div>
+            <div class="bar-chart-track">
+              <div class="bar-chart-bar-bg" style="width:${bgW}%;background:${isUp ? 'var(--accent-green)' : 'var(--accent-red)'}"></div>
+              <div class="bar-chart-bar-fg" style="width:${fgW}%;background:${barColor}"></div>
+            </div>
+            <div class="bar-chart-value">
+              <span class="tvl">${fmtUSD(f.tvl)}</span>
+              <span class="change ${isUp ? 'up' : 'down'}">${isUp ? '▲' : '▼'}${Math.abs(pct).toFixed(1)}%</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function renderBridgeFlows() {
       const flows = bridgesData.chainFlows || [];
       const maxFlow = Math.max(...flows.map(f => Math.abs(f.netFlow7d || 0)), 1);
@@ -1205,10 +1621,14 @@
         const absFlow = Math.abs(f.netFlow7d || 0);
         const barW = maxFlow > 0 ? (absFlow / maxFlow) * 100 : 0;
         const pct = f.change7dPct || 0;
+        const logoUrl = getChainLogoUrl(f.chain);
 
         return `
           <div class="flow-card">
-            <div class="chain-name">${f.chain}</div>
+            <div class="flow-card-header">
+              <div class="flow-logo">${logoHtml(logoUrl, f.chain, 20)}</div>
+              <div class="chain-name">${f.chain}</div>
+            </div>
             <div class="tvl-row"><span>TVL</span><span>${fmtUSD(f.tvl)}</span></div>
             <div class="flow-indicator ${cls}">${arrow} ${fmtUSD(absFlow)} (${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)</div>
             <div class="flow-bar-container"><div class="flow-bar ${cls}" style="width:${barW}%"></div></div>
@@ -1221,11 +1641,11 @@
       const flows = bridgesData.chainFlows || [];
       document.getElementById('bridge-tbody').innerHTML = flows.map((f, i) => {
         const pct = f.change7dPct || 0;
-        const pctClass = pct >= 0 ? 'up' : 'down';
+        const logoUrl = getChainLogoUrl(f.chain);
         return `
         <tr>
           <td>${rankBadge(i + 1)}</td>
-          <td><div class="protocol-name">${f.chain}</div></td>
+          <td><div class="protocol-cell"><div class="protocol-logo">${logoHtml(logoUrl, f.chain, 24)}</div><div class="protocol-name">${f.chain}</div></div></td>
           <td>${fmtUSD(f.tvl)}</td>
           <td class="hide-mobile">${fmtUSD(f.tvl7dAgo)}</td>
           <td>${trendBadge(pct)}</td>
@@ -1269,7 +1689,7 @@
         const r2 = await fetch('data/dexs.json');
         dexsData = await r2.json();
         renderDexSummary();
-        renderDexPodium();
+        renderDexDonut();
         renderDexTable();
       } catch (e) { console.error('dexs:', e); }
 
@@ -1277,37 +1697,39 @@
         const r3 = await fetch('data/bridges.json');
         bridgesData = await r3.json();
         renderBridgeSummary();
+        renderTvlBarChart();
         renderBridgeFlows();
         renderBridgeTable();
       } catch (e) { console.error('bridges:', e); }
     }
 
     loadAllData();
-    
+
     // ═══ IFRAME AUTO-RESIZE ═══
     function sendHeight() {
       const height = document.body.scrollHeight;
       window.parent.postMessage({ type: 'resize', height: height }, '*');
     }
-    
-    // Send height on load and when content changes
+
     window.addEventListener('load', () => {
       sendHeight();
-      // Send again after data loads
       setTimeout(sendHeight, 1000);
       setTimeout(sendHeight, 2000);
     });
-    
-    // Send height when tab changes
+
     const originalSwitchTab = switchTab;
     switchTab = function(tabId) {
       originalSwitchTab(tabId);
       setTimeout(sendHeight, 100);
     };
-    
-    // Observe content changes
+
     const resizeObserver = new ResizeObserver(() => sendHeight());
     resizeObserver.observe(document.body);
+
+    // Redraw donut on resize
+    window.addEventListener('resize', () => {
+      if (dexsData.dexs.length > 0) renderDexDonut();
+    });
   </script>
 </body>
 </html>
