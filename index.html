@@ -64,24 +64,11 @@
       gap: 14px;
     }
 
-    .header-title .icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
     .header-title h1 {
       font-size: 22px;
       font-weight: 900;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 40%, var(--accent-green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
     }
 
     .header-right {
@@ -1034,7 +1021,6 @@
   <header class="header">
     <div class="header-top">
       <div class="header-title">
-        <div class="icon">◈</div>
         <h1>DeFi 대시보드</h1>
       </div>
       <div class="header-right">
@@ -1232,7 +1218,16 @@
       </div>
 
       <div class="section-title">📊 체인 TVL 비교 (Top 15)</div>
-      <div class="bar-chart-section" id="tvl-bar-chart"></div>
+      <div class="donut-chart-section">
+        <div class="donut-container">
+          <canvas id="tvl-donut-canvas" width="240" height="240"></canvas>
+          <div class="donut-center">
+            <div class="label">전체 TVL</div>
+            <div class="value" id="tvl-donut-total">—</div>
+          </div>
+        </div>
+        <div class="donut-legend" id="tvl-donut-legend"></div>
+      </div>
 
       <div class="section-title">⛓️ 체인별 TVL 변화 (7일)</div>
       <div class="flow-grid" id="chain-flow-grid"></div>
@@ -1573,45 +1568,109 @@
     }
 
     // ═══ TAB 3: CHAIN TVL ═══
+    const TVL_DONUT_COLORS = [
+      '#627eea', '#00e599', '#f0b90b', '#f7931a', '#eb0029',
+      '#0052ff', '#8b5cf6', '#28a0f0', '#6fbcf0', '#8247e5',
+      '#e84142', '#ff6600', '#2ed8a3', '#ec4899', '#71717a'
+    ];
+
     function renderTvlBarChart() {
       const flows = bridgesData.chainFlows || [];
-      const top15 = flows.slice(0, 15);
-      if (top15.length === 0) return;
+      const top10 = flows.slice(0, 10);
+      if (top10.length === 0) return;
 
-      const maxTvl = Math.max(...top15.map(f => Math.max(f.tvl || 0, f.tvl7dAgo || 0)));
-      // Log scale: map values to visual width
-      const logScale = (val) => {
-        if (val <= 0) return 0;
-        const logMax = Math.log10(maxTvl);
-        const logMin = Math.log10(Math.max(top15[top15.length - 1]?.tvl || 1e6, 1e6));
-        const logVal = Math.log10(val);
-        const pct = ((logVal - logMin) / (logMax - logMin)) * 100;
-        return Math.max(pct, 2);
-      };
+      const totalTvl = flows.reduce((a, f) => a + (f.tvl || 0), 0);
+      const top10Tvl = top10.reduce((a, f) => a + (f.tvl || 0), 0);
+      const otherTvl = totalTvl - top10Tvl;
 
-      const container = document.getElementById('tvl-bar-chart');
-      container.innerHTML = top15.map(f => {
-        const pct = f.change7dPct || 0;
-        const isUp = pct >= 0;
-        const barColor = isUp ? 'var(--accent-green)' : 'var(--accent-red)';
-        const bgColor = isUp ? 'rgba(0,229,153,0.15)' : 'rgba(255,68,102,0.15)';
-        const fgW = logScale(f.tvl);
-        const bgW = logScale(f.tvl7dAgo || f.tvl);
-        const logoUrl = getChainLogoUrl(f.chain);
+      // Build segments: top10 + 기타
+      const segments = top10.map((f, i) => ({
+        name: f.chain,
+        value: f.tvl || 0,
+        color: TVL_DONUT_COLORS[i % TVL_DONUT_COLORS.length],
+        change: f.change7dPct || 0,
+        logoUrl: getChainLogoUrl(f.chain)
+      }));
+      if (otherTvl > 0) {
+        segments.push({ name: '기타', value: otherTvl, color: '#3f3f46', change: null, logoUrl: null });
+      }
 
+      // Update total
+      document.getElementById('tvl-donut-total').textContent = fmtUSD(totalTvl);
+
+      // Draw donut
+      const canvas = document.getElementById('tvl-donut-canvas');
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const displaySize = Math.min(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight);
+      canvas.width = displaySize * dpr;
+      canvas.height = displaySize * dpr;
+      canvas.style.width = displaySize + 'px';
+      canvas.style.height = displaySize + 'px';
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, displaySize, displaySize);
+
+      const cx = displaySize / 2;
+      const cy = displaySize / 2;
+      const outerR = displaySize / 2 - 4;
+      const innerR = outerR * 0.62;
+      let startAngle = -Math.PI / 2;
+
+      segments.forEach(seg => {
+        const sliceAngle = (seg.value / totalTvl) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, outerR, startAngle, startAngle + sliceAngle);
+        ctx.arc(cx, cy, innerR, startAngle + sliceAngle, startAngle, true);
+        ctx.closePath();
+        ctx.fillStyle = seg.color;
+        ctx.fill();
+        startAngle += sliceAngle;
+      });
+
+      // Draw inner shadow
+      ctx.beginPath();
+      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fill();
+
+      // Thin gap lines
+      startAngle = -Math.PI / 2;
+      segments.forEach(seg => {
+        const sliceAngle = (seg.value / totalTvl) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(startAngle) * outerR, cy + Math.sin(startAngle) * outerR);
+        ctx.strokeStyle = '#0a0a0a';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        startAngle += sliceAngle;
+      });
+
+      // Render legend
+      const legendEl = document.getElementById('tvl-donut-legend');
+      legendEl.innerHTML = segments.map(seg => {
+        const share = ((seg.value / totalTvl) * 100).toFixed(1);
+        let changeHtml = '';
+        if (seg.change !== null && seg.change !== undefined) {
+          const cls = seg.change >= 0 ? 'up' : 'down';
+          const arrow = seg.change >= 0 ? '▲' : '▼';
+          changeHtml = `<span class="legend-change ${cls}">${arrow}${Math.abs(seg.change).toFixed(1)}%</span>`;
+        }
+        let logoContent = '';
+        if (seg.logoUrl) {
+          logoContent = `<div class="legend-logo">${logoHtml(seg.logoUrl, seg.name, 22)}</div>`;
+        }
         return `
-          <div class="bar-chart-row">
-            <div class="bar-chart-label">
-              <div class="chain-logo">${logoHtml(logoUrl, f.chain, 22)}</div>
-              <span class="name">${f.chain}</span>
-            </div>
-            <div class="bar-chart-track">
-              <div class="bar-chart-bar-bg" style="width:${bgW}%;background:${isUp ? 'var(--accent-green)' : 'var(--accent-red)'}"></div>
-              <div class="bar-chart-bar-fg" style="width:${fgW}%;background:${barColor}"></div>
-            </div>
-            <div class="bar-chart-value">
-              <span class="tvl">${fmtUSD(f.tvl)}</span>
-              <span class="change ${isUp ? 'up' : 'down'}">${isUp ? '▲' : '▼'}${Math.abs(pct).toFixed(1)}%</span>
+          <div class="donut-legend-item">
+            <span class="legend-color" style="background:${seg.color}"></span>
+            ${logoContent}
+            <div class="legend-info">
+              <span class="legend-name">${seg.name}</span>
+              <div class="legend-data">
+                <span class="legend-vol">${fmtUSD(seg.value)}</span>
+                <span class="legend-share">${share}%</span>
+                ${changeHtml}
+              </div>
             </div>
           </div>
         `;
@@ -1735,6 +1794,7 @@
         }
         if (tabId === 'bridge' && (bridgesData.chainFlows || []).length > 0) {
           try { renderTvlBarChart(); } catch(e) {}
+          try { renderBridgeFlows(); } catch(e) {}
         }
         sendHeight();
       }, 50);
@@ -1743,9 +1803,10 @@
     const resizeObserver = new ResizeObserver(() => sendHeight());
     resizeObserver.observe(document.body);
 
-    // Redraw donut on resize
+    // Redraw donuts on resize
     window.addEventListener('resize', () => {
       if (dexsData.dexs.length > 0) renderDexDonut();
+      if ((bridgesData.chainFlows || []).length > 0) renderTvlBarChart();
     });
   </script>
 </body>
