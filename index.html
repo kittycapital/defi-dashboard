@@ -565,6 +565,7 @@
       padding: 24px;
       margin-bottom: 24px;
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 24px;
     }
@@ -599,11 +600,11 @@
     }
 
     .donut-legend {
-      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 6px;
       min-width: 0;
+      max-width: 480px;
     }
 
     .donut-legend-item {
@@ -660,7 +661,7 @@
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 12px;
     }
 
     .legend-name {
@@ -672,6 +673,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
     }
 
     .legend-vol {
@@ -996,6 +999,10 @@
         width: 200px;
         height: 200px;
         margin: 0 auto;
+      }
+      .donut-legend {
+        max-width: 100%;
+        width: 100%;
       }
 
       .bar-chart-label { width: 110px; }
