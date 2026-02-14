@@ -566,7 +566,7 @@
       margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 24px;
     }
 
     .donut-container {
@@ -602,20 +602,30 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+      min-width: 0;
     }
 
     .donut-legend-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 10px;
+      gap: 8px;
+      padding: 5px 8px;
       border-radius: 8px;
-      transition: background 0.15s;
+      transition: all 0.2s;
+      cursor: pointer;
     }
 
     .donut-legend-item:hover {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .donut-legend-item.dimmed {
+      opacity: 0.3;
+    }
+
+    .donut-legend-item.highlighted {
+      background: rgba(255,255,255,0.06);
     }
 
     .legend-color {
@@ -823,6 +833,101 @@
       border-radius: 3px;
     }
 
+    /* ── Revenue Bar Chart ── */
+    .revenue-bar-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .revenue-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .revenue-bar-row:last-child { border-bottom: none; }
+
+    .revenue-bar-rank {
+      width: 28px;
+      flex-shrink: 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .revenue-bar-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 150px;
+      flex-shrink: 0;
+    }
+
+    .revenue-bar-label .name {
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .revenue-bar-track {
+      flex: 1;
+      height: 24px;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .revenue-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.6s ease;
+      min-width: 2px;
+    }
+
+    .revenue-bar-value {
+      width: 160px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .revenue-bar-value .amount {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .revenue-bar-value .trend {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .revenue-bar-value .trend.up {
+      color: var(--accent-green);
+      background: var(--accent-green-dim);
+    }
+
+    .revenue-bar-value .trend.down {
+      color: var(--accent-red);
+      background: var(--accent-red-dim);
+    }
+
     /* ── Footer ── */
     .footer {
       max-width: 1400px;
@@ -896,6 +1001,8 @@
       .bar-chart-label { width: 110px; }
       .bar-chart-value { width: 160px; }
       .bar-chart-label .name { font-size: 11px; }
+      .revenue-bar-label { width: 120px; }
+      .revenue-bar-value { width: 140px; }
     }
 
     @media (max-width: 600px) {
@@ -970,6 +1077,17 @@
       .bar-chart-value .tvl { font-size: 10px; }
       .bar-chart-value .change { font-size: 9px; }
       .bar-chart-row { gap: 6px; padding: 5px 0; }
+
+      .revenue-bar-section { padding: 12px; }
+      .revenue-bar-rank { width: 22px; font-size: 10px; }
+      .revenue-bar-label { width: 80px; }
+      .revenue-bar-label .name { font-size: 10px; }
+      .revenue-bar-label .protocol-logo { width: 18px; height: 18px; }
+      .revenue-bar-track { height: 20px; }
+      .revenue-bar-value { width: 110px; gap: 4px; }
+      .revenue-bar-value .amount { font-size: 10px; }
+      .revenue-bar-value .trend { font-size: 9px; }
+      .revenue-bar-row { gap: 4px; padding: 4px 0; }
 
       .donut-container { width: 180px; height: 180px; }
       .donut-center .value { font-size: 16px; }
@@ -1095,6 +1213,9 @@
           <div class="sub">매일 오전 7시 KST 갱신</div>
         </div>
       </div>
+
+      <div class="section-title">📊 프로토콜 수익 비교 (Top 10)</div>
+      <div class="revenue-bar-section" id="revenue-bar-chart"></div>
 
       <div class="controls">
         <div class="controls-left">
@@ -1369,6 +1490,7 @@
       document.querySelectorAll('.period-btn[data-period]').forEach(b => b.classList.remove('active'));
       document.querySelector(`[data-period="${period}"]`).classList.add('active');
       renderFeesTable();
+      renderRevenueBarChart();
     }
 
     function getFeesVal(p) {
@@ -1403,11 +1525,147 @@
       `).join('');
     }
 
+    const REVENUE_BAR_COLORS = [
+      '#00e599', '#3b82f6', '#a855f7', '#f0b840', '#ff4466',
+      '#f97316', '#06b6d4', '#ec4899', '#8b5cf6', '#10b981'
+    ];
+
+    function renderRevenueBarChart() {
+      const sorted = [...feesData.protocols].sort((a, b) => getFeesVal(b) - getFeesVal(a));
+      const top10 = sorted.slice(0, 10);
+      if (top10.length === 0) return;
+
+      const maxVal = getFeesVal(top10[0]);
+      const container = document.getElementById('revenue-bar-chart');
+
+      container.innerHTML = top10.map((p, i) => {
+        const val = getFeesVal(p);
+        const pct = maxVal > 0 ? (val / maxVal) * 100 : 0;
+        const trend = p.trend;
+        const isUp = trend !== null && trend !== undefined && trend >= 0;
+        const barColor = REVENUE_BAR_COLORS[i % REVENUE_BAR_COLORS.length];
+        const logoUrl = getProtocolLogoUrl(p.name);
+        let trendHtml = '';
+        if (trend !== null && trend !== undefined) {
+          const cls = isUp ? 'up' : 'down';
+          const arrow = isUp ? '▲' : '▼';
+          trendHtml = `<span class="trend ${cls}">${arrow}${Math.abs(trend).toFixed(1)}%</span>`;
+        }
+
+        return `
+          <div class="revenue-bar-row">
+            <div class="revenue-bar-rank">${rankBadge(i + 1)}</div>
+            <div class="revenue-bar-label">
+              <div class="protocol-logo">${logoHtml(logoUrl, p.name, 22)}</div>
+              <span class="name">${p.name}</span>
+            </div>
+            <div class="revenue-bar-track">
+              <div class="revenue-bar-fill" style="width:${Math.max(pct, 1)}%;background:${barColor};opacity:0.7"></div>
+            </div>
+            <div class="revenue-bar-value">
+              <span class="amount">${fmtUSD(val)}</span>
+              ${trendHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     // ═══ TAB 2: DEX ═══
     const DONUT_COLORS = [
       '#a855f7', '#3b82f6', '#00e599', '#f0b840', '#ff4466',
       '#f97316', '#06b6d4', '#ec4899', '#8b5cf6', '#10b981'
     ];
+
+    // Store segments for click interaction
+    let dexSegments = [];
+    let dexHighlightIdx = -1;
+    let tvlSegments = [];
+    let tvlHighlightIdx = -1;
+
+    function drawDonut(canvasId, segments, total, highlightIdx, bgColor) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const container = canvas.parentElement;
+      const rect = container.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const size = Math.min(rect.width, rect.height);
+      canvas.style.width = size + 'px';
+      canvas.style.height = size + 'px';
+      canvas.width = size * dpr;
+      canvas.height = size * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, size, size);
+
+      const cx = size / 2;
+      const cy = size / 2;
+      const outerR = Math.min(cx, cy) - 4;
+      const innerR = outerR * 0.62;
+      const bg = bgColor || '#0a0a0a';
+
+      let angle = -Math.PI / 2;
+      segments.forEach((seg, i) => {
+        const sweep = (seg.value / total) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, outerR, angle, angle + sweep);
+        ctx.arc(cx, cy, innerR, angle + sweep, angle, true);
+        ctx.closePath();
+
+        if (highlightIdx >= 0 && highlightIdx !== i) {
+          ctx.fillStyle = seg.color;
+          ctx.globalAlpha = 0.2;
+        } else {
+          ctx.fillStyle = seg.color;
+          ctx.globalAlpha = 1;
+        }
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        angle += sweep;
+      });
+
+      // Inner circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+      ctx.fillStyle = bg;
+      ctx.fill();
+
+      // Gap lines
+      angle = -Math.PI / 2;
+      segments.forEach(seg => {
+        const sweep = (seg.value / total) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(angle) * outerR, cy + Math.sin(angle) * outerR);
+        ctx.strokeStyle = bg;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        angle += sweep;
+      });
+    }
+
+    function setupLegendClicks(legendId, canvasId, segments, total, getHighlightIdx, setHighlightIdx) {
+      const legend = document.getElementById(legendId);
+      const items = legend.querySelectorAll('.donut-legend-item');
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          const currentIdx = getHighlightIdx();
+          if (currentIdx === i) {
+            setHighlightIdx(-1);
+            items.forEach(el => { el.classList.remove('dimmed', 'highlighted'); });
+          } else {
+            setHighlightIdx(i);
+            items.forEach((el, j) => {
+              el.classList.toggle('dimmed', j !== i);
+              el.classList.toggle('highlighted', j === i);
+            });
+          }
+          drawDonut(canvasId, segments, total, getHighlightIdx(), '#0a0a0a');
+        });
+      });
+    }
 
     function setDexPeriod(period) {
       currentDexPeriod = period;
@@ -1425,21 +1683,9 @@
     function renderDexDonut() {
       const canvas = document.getElementById('dex-donut-canvas');
       if (!canvas) return;
-      
       const container = canvas.parentElement;
       const containerRect = container.getBoundingClientRect();
-      // If hidden (display:none), skip - will re-render on tab switch
       if (containerRect.width === 0 || containerRect.height === 0) return;
-      
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      const size = Math.min(containerRect.width, containerRect.height);
-      canvas.style.width = size + 'px';
-      canvas.style.height = size + 'px';
-      canvas.width = size * dpr;
-      canvas.height = size * dpr;
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, size, size);
 
       const sorted = [...dexsData.dexs].sort((a, b) => getDexVal(b) - getDexVal(a));
       const topN = 7;
@@ -1451,14 +1697,9 @@
 
       const periodLabels = { '24h': '24H', '7d': '7D', '30d': '30D' };
       document.getElementById('donut-total').textContent = fmtUSD(totalVol);
-      document.querySelector('.donut-center .label').textContent = `${periodLabels[currentDexPeriod]} 총 거래량`;
+      document.querySelector('#panel-dex .donut-center .label').textContent = `${periodLabels[currentDexPeriod]} 총 거래량`;
 
-      const cx = size / 2;
-      const cy = size / 2;
-      const outerR = Math.min(cx, cy) - 4;
-      const innerR = outerR * 0.62;
-
-      const segments = topDexs.map((d, i) => ({
+      dexSegments = topDexs.map((d, i) => ({
         name: d.displayName || d.name,
         value: getDexVal(d),
         color: DONUT_COLORS[i % DONUT_COLORS.length],
@@ -1466,43 +1707,15 @@
         slug: d.name
       }));
       if (othersVol > 0) {
-        segments.push({ name: '기타', value: othersVol, color: '#2a2a3a', change: null, slug: null });
+        dexSegments.push({ name: '기타', value: othersVol, color: '#2a2a3a', change: null, slug: null });
       }
 
-      let angle = -Math.PI / 2;
-      segments.forEach(seg => {
-        const sweep = (seg.value / totalVol) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, outerR, angle, angle + sweep);
-        ctx.closePath();
-        ctx.fillStyle = seg.color;
-        ctx.fill();
-        angle += sweep;
-      });
-
-      // Inner circle
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
-      ctx.fillStyle = '#0a0a0a';
-      ctx.fill();
-
-      // Thin gap lines
-      angle = -Math.PI / 2;
-      segments.forEach(seg => {
-        const sweep = (seg.value / totalVol) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(cx + Math.cos(angle) * outerR, cy + Math.sin(angle) * outerR);
-        ctx.strokeStyle = '#0a0a0a';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        angle += sweep;
-      });
+      dexHighlightIdx = -1;
+      drawDonut('dex-donut-canvas', dexSegments, totalVol, -1, '#0a0a0a');
 
       // Legend
       const legend = document.getElementById('dex-donut-legend');
-      legend.innerHTML = segments.map(seg => {
+      legend.innerHTML = dexSegments.map(seg => {
         const share = ((seg.value / totalVol) * 100).toFixed(1);
         const changeHtml = seg.change !== null && seg.change !== undefined
           ? `<span class="legend-change ${seg.change >= 0 ? 'up' : 'down'}">${seg.change >= 0 ? '▲' : '▼'}${Math.abs(seg.change).toFixed(1)}%</span>`
@@ -1526,6 +1739,9 @@
           </div>
         `;
       }).join('');
+
+      setupLegendClicks('dex-donut-legend', 'dex-donut-canvas', dexSegments, totalVol,
+        () => dexHighlightIdx, (v) => { dexHighlightIdx = v; });
     }
 
     function renderDexTable() {
@@ -1583,8 +1799,7 @@
       const top10Tvl = top10.reduce((a, f) => a + (f.tvl || 0), 0);
       const otherTvl = totalTvl - top10Tvl;
 
-      // Build segments: top10 + 기타
-      const segments = top10.map((f, i) => ({
+      tvlSegments = top10.map((f, i) => ({
         name: f.chain,
         value: f.tvl || 0,
         color: TVL_DONUT_COLORS[i % TVL_DONUT_COLORS.length],
@@ -1592,63 +1807,17 @@
         logoUrl: getChainLogoUrl(f.chain)
       }));
       if (otherTvl > 0) {
-        segments.push({ name: '기타', value: otherTvl, color: '#3f3f46', change: null, logoUrl: null });
+        tvlSegments.push({ name: '기타', value: otherTvl, color: '#3f3f46', change: null, logoUrl: null });
       }
 
-      // Update total
       document.getElementById('tvl-donut-total').textContent = fmtUSD(totalTvl);
 
-      // Draw donut
-      const canvas = document.getElementById('tvl-donut-canvas');
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      const displaySize = Math.min(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight);
-      canvas.width = displaySize * dpr;
-      canvas.height = displaySize * dpr;
-      canvas.style.width = displaySize + 'px';
-      canvas.style.height = displaySize + 'px';
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, displaySize, displaySize);
-
-      const cx = displaySize / 2;
-      const cy = displaySize / 2;
-      const outerR = displaySize / 2 - 4;
-      const innerR = outerR * 0.62;
-      let startAngle = -Math.PI / 2;
-
-      segments.forEach(seg => {
-        const sliceAngle = (seg.value / totalTvl) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.arc(cx, cy, outerR, startAngle, startAngle + sliceAngle);
-        ctx.arc(cx, cy, innerR, startAngle + sliceAngle, startAngle, true);
-        ctx.closePath();
-        ctx.fillStyle = seg.color;
-        ctx.fill();
-        startAngle += sliceAngle;
-      });
-
-      // Draw inner shadow
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
-      ctx.fillStyle = '#0a0a0a';
-      ctx.fill();
-
-      // Thin gap lines
-      startAngle = -Math.PI / 2;
-      segments.forEach(seg => {
-        const sliceAngle = (seg.value / totalTvl) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(cx + Math.cos(startAngle) * outerR, cy + Math.sin(startAngle) * outerR);
-        ctx.strokeStyle = '#0a0a0a';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        startAngle += sliceAngle;
-      });
+      tvlHighlightIdx = -1;
+      drawDonut('tvl-donut-canvas', tvlSegments, totalTvl, -1, '#0a0a0a');
 
       // Render legend
       const legendEl = document.getElementById('tvl-donut-legend');
-      legendEl.innerHTML = segments.map(seg => {
+      legendEl.innerHTML = tvlSegments.map(seg => {
         const share = ((seg.value / totalTvl) * 100).toFixed(1);
         let changeHtml = '';
         if (seg.change !== null && seg.change !== undefined) {
@@ -1675,6 +1844,9 @@
           </div>
         `;
       }).join('');
+
+      setupLegendClicks('tvl-donut-legend', 'tvl-donut-canvas', tvlSegments, totalTvl,
+        () => tvlHighlightIdx, (v) => { tvlHighlightIdx = v; });
     }
 
     function renderBridgeFlows() {
@@ -1750,6 +1922,7 @@
         document.getElementById('sum-count').textContent = feesData.totalProtocols || '—';
         document.getElementById('sum-updated').textContent = feesData.lastUpdatedKST || '—';
         try { renderFeesTable(); } catch(e) { console.error('feesTable:', e); }
+        try { renderRevenueBarChart(); } catch(e) { console.error('revenueBar:', e); }
       } catch (e) { console.error('fees:', e); }
 
       try {
@@ -1789,6 +1962,9 @@
       originalSwitchTab(tabId);
       // Re-render charts that may have been hidden
       setTimeout(() => {
+        if (tabId === 'revenue' && feesData.protocols.length > 0) {
+          try { renderRevenueBarChart(); } catch(e) {}
+        }
         if (tabId === 'dex' && dexsData.dexs.length > 0) {
           try { renderDexDonut(); } catch(e) {}
         }
