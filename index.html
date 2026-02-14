@@ -1430,13 +1430,21 @@
     function renderDexDonut() {
       const canvas = document.getElementById('dex-donut-canvas');
       if (!canvas) return;
+      
+      const container = canvas.parentElement;
+      const containerRect = container.getBoundingClientRect();
+      // If hidden (display:none), skip - will re-render on tab switch
+      if (containerRect.width === 0 || containerRect.height === 0) return;
+      
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const size = Math.min(containerRect.width, containerRect.height);
+      canvas.style.width = size + 'px';
+      canvas.style.height = size + 'px';
+      canvas.width = size * dpr;
+      canvas.height = size * dpr;
       ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.clearRect(0, 0, size, size);
 
       const sorted = [...dexsData.dexs].sort((a, b) => getDexVal(b) - getDexVal(a));
       const topN = 7;
@@ -1450,8 +1458,8 @@
       document.getElementById('donut-total').textContent = fmtUSD(totalVol);
       document.querySelector('.donut-center .label').textContent = `${periodLabels[currentDexPeriod]} 총 거래량`;
 
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
+      const cx = size / 2;
+      const cy = size / 2;
       const outerR = Math.min(cx, cy) - 4;
       const innerR = outerR * 0.62;
 
@@ -1682,24 +1690,24 @@
         document.getElementById('lastUpdated').textContent = feesData.lastUpdatedKST || '—';
         document.getElementById('sum-count').textContent = feesData.totalProtocols || '—';
         document.getElementById('sum-updated').textContent = feesData.lastUpdatedKST || '—';
-        renderFeesTable();
+        try { renderFeesTable(); } catch(e) { console.error('feesTable:', e); }
       } catch (e) { console.error('fees:', e); }
 
       try {
         const r2 = await fetch('data/dexs.json');
         dexsData = await r2.json();
-        renderDexSummary();
-        renderDexDonut();
-        renderDexTable();
+        try { renderDexSummary(); } catch(e) { console.error('dexSummary:', e); }
+        try { renderDexDonut(); } catch(e) { console.error('dexDonut:', e); }
+        try { renderDexTable(); } catch(e) { console.error('dexTable:', e); }
       } catch (e) { console.error('dexs:', e); }
 
       try {
         const r3 = await fetch('data/bridges.json');
         bridgesData = await r3.json();
-        renderBridgeSummary();
-        renderTvlBarChart();
-        renderBridgeFlows();
-        renderBridgeTable();
+        try { renderBridgeSummary(); } catch(e) { console.error('bridgeSummary:', e); }
+        try { renderTvlBarChart(); } catch(e) { console.error('tvlBarChart:', e); }
+        try { renderBridgeFlows(); } catch(e) { console.error('bridgeFlows:', e); }
+        try { renderBridgeTable(); } catch(e) { console.error('bridgeTable:', e); }
       } catch (e) { console.error('bridges:', e); }
     }
 
@@ -1720,7 +1728,16 @@
     const originalSwitchTab = switchTab;
     switchTab = function(tabId) {
       originalSwitchTab(tabId);
-      setTimeout(sendHeight, 100);
+      // Re-render charts that may have been hidden
+      setTimeout(() => {
+        if (tabId === 'dex' && dexsData.dexs.length > 0) {
+          try { renderDexDonut(); } catch(e) {}
+        }
+        if (tabId === 'bridge' && (bridgesData.chainFlows || []).length > 0) {
+          try { renderTvlBarChart(); } catch(e) {}
+        }
+        sendHeight();
+      }, 50);
     };
 
     const resizeObserver = new ResizeObserver(() => sendHeight());
