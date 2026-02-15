@@ -27,7 +27,6 @@
   --hv-shadow-sm:0 1px 3px rgba(0,0,0,.5);--hv-shadow-lg:0 8px 32px rgba(0,0,0,.7);
   --hv-transition-fast:150ms ease;--hv-transition:250ms ease;
   --hv-max-width:1280px;--hv-header-height:60px;
-  /* accent aliases */
   --accent-green:#22c55e;--accent-green-dim:rgba(34,197,94,0.1);
   --accent-red:#ef4444;--accent-red-dim:rgba(239,68,68,0.1);
   --accent-blue:#3b82f6;--accent-blue-dim:rgba(59,130,246,0.12);
@@ -44,22 +43,23 @@ body::-webkit-scrollbar{display:none}
 
 /* ===== HEADER ===== */
 .hv-header{position:sticky;top:0;z-index:100;height:var(--hv-header-height);background:rgba(0,0,0,.9);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--hv-border);display:flex;align-items:center;padding:0 24px}
-.hv-header-inner{width:100%;max-width:var(--hv-max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hv-header-inner{width:100%;max-width:var(--hv-max-width);margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.hv-header-left{min-width:0}
+.hv-header-center{text-align:center}
 .hv-header-center h1{font-family:var(--hv-font-display);font-size:.938rem;font-weight:600;color:var(--hv-text-primary);white-space:nowrap}
-.hv-header-category{font-size:.7rem;color:var(--hv-text-tertiary);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
-.hv-header-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hv-header-category{font-size:.7rem;color:var(--hv-text-tertiary);font-weight:500;text-transform:uppercase;letter-spacing:.08em;text-align:center}
+.hv-header-right{display:flex;align-items:center;gap:8px;flex-shrink:0;justify-content:flex-end}
 .hv-update-badge{font-family:var(--hv-font-mono);font-size:.688rem;color:var(--hv-text-tertiary);white-space:nowrap;display:flex;align-items:center;gap:6px}
 .hv-live-dot{width:5px;height:5px;background:var(--accent-green);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* ===== TABS ===== */
-.hv-tabs{display:flex;gap:2px;border-bottom:1px solid var(--hv-border);max-width:var(--hv-max-width);margin:0 auto;padding:0 24px}
+.hv-tabs{display:flex;gap:2px;border-bottom:1px solid var(--hv-border);max-width:var(--hv-max-width);margin:0 auto;padding:0 24px;justify-content:center}
 .hv-tab{padding:12px 24px;font-family:var(--hv-font-body);font-size:13px;font-weight:700;color:var(--hv-text-muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
 .hv-tab:hover{color:var(--hv-text-secondary)}
 .hv-tab.active{color:var(--accent-green);border-bottom-color:var(--accent-green)}
 .hv-tab[data-tab="dex"].active{color:var(--accent-purple);border-bottom-color:var(--accent-purple)}
 .hv-tab[data-tab="bridge"].active{color:var(--accent-orange);border-bottom-color:var(--accent-orange)}
-.tab-icon{font-size:15px}
 
 /* ===== CONTENT ===== */
 .hv-page{max-width:var(--hv-max-width);margin:0 auto;padding:24px 24px 48px}
@@ -175,7 +175,8 @@ tbody td:nth-child(2){text-align:left}
 .flow-bar.outflow{background:var(--accent-red)}
 
 /* ===== SECTION TITLE ===== */
-.section-title{font-size:14px;font-weight:700;color:var(--hv-text-secondary);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title{font-size:13px;font-weight:600;color:var(--hv-text-tertiary);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;text-transform:uppercase;letter-spacing:0.04em}
+.section-title::before{content:'';flex:1;height:1px;background:var(--hv-border)}
 .section-title::after{content:'';flex:1;height:1px;background:var(--hv-border)}
 
 /* ===== MARKET SHARE BAR ===== */
@@ -199,7 +200,7 @@ tbody td:nth-child(2){text-align:left}
 .bar-chart-value .change.up{color:var(--accent-green);background:var(--accent-green-dim)}
 .bar-chart-value .change.down{color:var(--accent-red);background:var(--accent-red-dim)}
 
-/* ===== CHART SHARE BAR (inline under each chart) ===== */
+/* ===== CHART SHARE BAR ===== */
 .chart-share-bar{display:flex;align-items:center;justify-content:flex-end;gap:5px;padding:10px 20px;margin-top:-1px;margin-bottom:20px;background:var(--hv-bg-card);border:1px solid var(--hv-border);border-radius:0 0 var(--hv-radius-lg) var(--hv-radius-lg)}
 .chart-share-bar .share-btn{padding:5px 10px;font-size:.688rem;gap:4px;border-radius:5px}
 .chart-share-bar .share-btn svg{width:12px;height:12px}
@@ -263,7 +264,6 @@ tbody td:nth-child(2){text-align:left}
   .hv-update-badge{display:none}
   .hv-tabs{padding:0 12px;gap:0}
   .hv-tab{padding:12px 12px;font-size:11px;flex:1;justify-content:center;min-width:0}
-  .tab-icon{font-size:14px}
   .hv-page{padding:12px 12px 32px}
   .summary-row{grid-template-columns:1fr 1fr;gap:8px}
   .summary-card{padding:12px 14px;border-radius:8px}
@@ -325,7 +325,6 @@ tbody td:nth-child(2){text-align:left}
   .summary-row{grid-template-columns:1fr}
   .flow-grid{grid-template-columns:1fr}
   .hv-tab{padding:10px 8px;font-size:10px}
-  .tab-icon{display:none}
   .bar-chart-label{width:70px}
   .bar-chart-value{width:100px}
 }
@@ -340,6 +339,7 @@ tbody td:nth-child(2){text-align:left}
 <!-- HEADER -->
 <header class="hv-header">
   <div class="hv-header-inner">
+    <div class="hv-header-left"></div>
     <div class="hv-header-center">
       <h1>DeFi 대시보드</h1>
       <span class="hv-header-category">DEFI · REVENUE · DEX · TVL</span>
@@ -352,9 +352,9 @@ tbody td:nth-child(2){text-align:left}
 
 <!-- TABS -->
 <nav class="hv-tabs">
-  <button class="hv-tab" data-tab="revenue" onclick="switchTab('revenue')"><span class="tab-icon">📊</span>수익 랭킹</button>
-  <button class="hv-tab" data-tab="dex" onclick="switchTab('dex')"><span class="tab-icon">⚔️</span>DEX 현물 거래량</button>
-  <button class="hv-tab active" data-tab="bridge" onclick="switchTab('bridge')"><span class="tab-icon">⛓️</span>체인 TVL</button>
+  <button class="hv-tab" data-tab="revenue" onclick="switchTab('revenue')">수익 랭킹</button>
+  <button class="hv-tab" data-tab="dex" onclick="switchTab('dex')">DEX 현물 거래량</button>
+  <button class="hv-tab active" data-tab="bridge" onclick="switchTab('bridge')">체인 TVL</button>
 </nav>
 
 <!-- CONTENT -->
@@ -363,12 +363,12 @@ tbody td:nth-child(2){text-align:left}
   <!-- TAB 1: Revenue -->
   <section id="panel-revenue" class="tab-panel">
     <div class="summary-row">
-      <div class="summary-card"><div class="label">🏆 1위 프로토콜</div><div class="value" id="sum-top1-name">—</div><div class="sub" id="sum-top1-val"></div></div>
+      <div class="summary-card"><div class="label">1위 프로토콜</div><div class="value" id="sum-top1-name">—</div><div class="sub" id="sum-top1-val"></div></div>
       <div class="summary-card"><div class="label">Top 20 합산 (24H)</div><div class="value" id="sum-total24h">—</div><div class="sub">전체 프로토콜 수익 합계</div></div>
       <div class="summary-card"><div class="label">총 프로토콜 수</div><div class="value" id="sum-count">—</div><div class="sub">수익 발생 기준</div></div>
       <div class="summary-card"><div class="label">업데이트</div><div class="value" style="font-size:14px" id="sum-updated">—</div><div class="sub">매일 오전 7시 KST 갱신</div></div>
     </div>
-    <div class="section-title">📊 프로토콜 수익 비교 (Top 10)</div>
+    <div class="section-title">프로토콜 수익 비교 (Top 10)</div>
     <div class="revenue-bar-section" id="revenue-bar-chart"></div>
     <div class="chart-share-bar" id="csb-revenue"></div>
     <div class="controls">
@@ -389,12 +389,12 @@ tbody td:nth-child(2){text-align:left}
   <!-- TAB 2: DEX -->
   <section id="panel-dex" class="tab-panel">
     <div class="summary-row">
-      <div class="summary-card"><div class="label">🥇 거래량 1위</div><div class="value" id="dex-top1-name">—</div><div class="sub" id="dex-top1-vol"></div></div>
+      <div class="summary-card"><div class="label">거래량 1위</div><div class="value" id="dex-top1-name">—</div><div class="sub" id="dex-top1-vol"></div></div>
       <div class="summary-card"><div class="label">전체 현물 거래량 (24H)</div><div class="value" id="dex-total24h">—</div><div class="sub">모든 DEX Spot 합계</div></div>
       <div class="summary-card"><div class="label">총 DEX 수</div><div class="value" id="dex-count">—</div><div class="sub">활성 DEX 기준</div></div>
       <div class="summary-card"><div class="label">이번 주 승자</div><div class="value" id="dex-winner">—</div><div class="sub" id="dex-winner-change"></div></div>
     </div>
-    <div class="section-title">🍩 DEX 점유율 현황</div>
+    <div class="section-title">DEX 점유율 현황</div>
     <div class="donut-chart-section">
       <div class="donut-container"><canvas id="dex-donut-canvas" width="240" height="240"></canvas><div class="donut-center"><div class="label">24H 총 거래량</div><div class="value" id="donut-total">—</div></div></div>
       <div class="donut-legend" id="dex-donut-legend"></div>
@@ -417,20 +417,20 @@ tbody td:nth-child(2){text-align:left}
   <!-- TAB 3: Chain TVL -->
   <section id="panel-bridge" class="tab-panel active">
     <div class="summary-row">
-      <div class="summary-card"><div class="label">🥇 TVL 1위 체인</div><div class="value" id="bridge-top1-name">—</div><div class="sub" id="bridge-top1-vol"></div></div>
+      <div class="summary-card"><div class="label">TVL 1위 체인</div><div class="value" id="bridge-top1-name">—</div><div class="sub" id="bridge-top1-vol"></div></div>
       <div class="summary-card"><div class="label">전체 TVL</div><div class="value" id="bridge-total24h">—</div><div class="sub">추적 체인 합계</div></div>
       <div class="summary-card"><div class="label">추적 체인 수</div><div class="value" id="bridge-count">—</div><div class="sub">TVL $100M+ 기준</div></div>
       <div class="summary-card"><div class="label">7일 자금 유입 1위</div><div class="value" id="bridge-inflow-chain">—</div><div class="sub" id="bridge-inflow-amount"></div></div>
     </div>
-    <div class="section-title">📊 체인 TVL 비교 (Top 15)</div>
+    <div class="section-title">체인 TVL 비교 (Top 15)</div>
     <div class="donut-chart-section">
       <div class="donut-container"><canvas id="tvl-donut-canvas" width="240" height="240"></canvas><div class="donut-center"><div class="label">전체 TVL</div><div class="value" id="tvl-donut-total">—</div></div></div>
       <div class="donut-legend" id="tvl-donut-legend"></div>
     </div>
     <div class="chart-share-bar" id="csb-tvl"></div>
-    <div class="section-title">⛓️ 체인별 TVL 변화 (7일)</div>
+    <div class="section-title">체인별 TVL 변화 (7일)</div>
     <div class="flow-grid" id="chain-flow-grid"></div>
-    <div class="section-title">📋 체인 TVL 순위</div>
+    <div class="section-title">체인 TVL 순위</div>
     <div class="table-wrapper">
       <table><thead><tr><th>#</th><th>체인</th><th>현재 TVL</th><th class="hide-mobile">7일 전 TVL</th><th>7일 변화</th><th class="hide-mobile">변화율</th></tr></thead>
       <tbody id="bridge-tbody"><tr><td colspan="6"><div class="loading"><div class="spinner"></div>데이터를 불러오는 중...</div></td></tr></tbody></table>
@@ -465,7 +465,7 @@ function ensureKakao(){try{if(typeof Kakao!=='undefined'&&!Kakao.isInitialized()
 function copyToClipboard(t){try{window.parent.postMessage({type:'clipboard',text:t},'*');}catch(e){}try{navigator.clipboard.writeText(t);}catch(e){}}
 function flashCopied(btn){if(!btn)return;var o=btn.innerHTML;btn.style.background='#22c55e';btn.style.color='#fff';btn.style.borderColor='#22c55e';var hl=btn.querySelector('.label-text');btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>'+(hl?'<span class="label-text" style="color:#fff">복사됨!</span>':'');setTimeout(function(){btn.style.background='';btn.style.color='';btn.style.borderColor='';btn.innerHTML=o;},2000);}
 function toast(m){var c=document.querySelector('.toast-wrap');if(!c){c=document.createElement('div');c.className='toast-wrap';document.body.appendChild(c);}var t=document.createElement('div');t.className='toast';t.textContent=m;c.appendChild(t);setTimeout(function(){t.style.opacity='0';t.style.transform='translateY(12px)';t.style.transition='.3s';setTimeout(function(){t.remove();},300);},3000);}
-function doShare(p,btn){var u=SHARE_URL,t=encodeURIComponent(SHARE_TITLE),eu=encodeURIComponent(u);switch(p){case'twitter':window.open('https://twitter.com/intent/tweet?text='+t+'&url='+eu,'_blank');break;case'telegram':window.open('https://t.me/share/url?url='+eu+'&text='+t,'_blank');break;case'kakao':if(!ensureKakao()){copyToClipboard(u);toast('링크 복사완료!');}else try{Kakao.Share.sendDefault({objectType:'feed',content:{title:'DeFi 대시보드',description:'DeFi 수익 · DEX 거래량 · 체인 TVL 분석',imageUrl:'https://raw.githubusercontent.com/kittycapital/kittycapital.github.io/main/assets/herdvibe-og.png',link:{mobileWebUrl:u,webUrl:u}},buttons:[{title:'대시보드 보기',link:{mobileWebUrl:u,webUrl:u}}]});}catch(e){copyToClipboard(u);toast('링크 복사완료!');}break;case'instagram':copyToClipboard(u);flashCopied(btn);toast('링크 복사완료! 인스타그램에 붙여넣기 하세요');break;case'link':copyToClipboard(u);flashCopied(btn);toast('링크가 복사되었습니다 ✓');break;}}
+function doShare(p,btn){var u=SHARE_URL,t=encodeURIComponent(SHARE_TITLE),eu=encodeURIComponent(u);switch(p){case'twitter':window.open('https://twitter.com/intent/tweet?text='+t+'&url='+eu,'_blank');break;case'telegram':window.open('https://t.me/share/url?url='+eu+'&text='+t,'_blank');break;case'kakao':if(!ensureKakao()){copyToClipboard(u);toast('링크 복사완료!');}else try{Kakao.Share.sendDefault({objectType:'feed',content:{title:'DeFi 대시보드',description:'DeFi 수익 · DEX 거래량 · 체인 TVL 분석',imageUrl:'https://raw.githubusercontent.com/kittycapital/kittycapital.github.io/main/assets/herdvibe-og.png',link:{mobileWebUrl:u,webUrl:u}},buttons:[{title:'대시보드 보기',link:{mobileWebUrl:u,webUrl:u}}]});}catch(e){copyToClipboard(u);toast('링크 복사완료!');}break;case'instagram':copyToClipboard(u);flashCopied(btn);toast('링크 복사완료! 인스타그램에 붙여넣기 하세요');break;case'link':copyToClipboard(u);flashCopied(btn);toast('링크가 복사되었습니다');break;}}
 
 /* ===== STATE ===== */
 let feesData = { protocols: [] };
@@ -622,14 +622,12 @@ function drawDonut(canvasId, segments, total, highlightIdx, bgColor) {
     angle += sweep;
   });
   ctx.beginPath(); ctx.arc(cx, cy, innerR, 0, Math.PI * 2); ctx.fillStyle = bg; ctx.fill();
-  // Watermark
   ctx.save();
   ctx.font = '700 ' + Math.max(12, size * 0.08) + 'px "Plus Jakarta Sans",sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.035)';
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText('Herdvibe.com', cx, cy);
   ctx.restore();
-  // Gap lines
   angle = -Math.PI / 2;
   segments.forEach(function(seg) {
     var sweep = (seg.value / total) * Math.PI * 2;
