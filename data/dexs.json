@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-05-06T22:18:17Z",
-  "lastUpdatedKST": "2026-05-06 07:18 KST",
-  "totalDexs": 662,
+  "lastUpdated": "2026-05-07T22:24:05Z",
+  "lastUpdatedKST": "2026-05-07 07:24 KST",
+  "totalDexs": 665,
   "dexs": [
     {
       "name": "Uniswap V4",
@@ -25,13 +25,13 @@
         "Monad",
         "X Layer"
       ],
-      "total24h": 749752387,
-      "total7d": 4405267460,
-      "total30d": 23037593962,
-      "totalAllTime": 325884868497,
-      "change1d": -10.21,
-      "change7d": -27.42,
-      "change1m": 116.56,
+      "total24h": 917626459,
+      "total7d": 4412555108,
+      "total30d": 23274032898,
+      "totalAllTime": 326875487690,
+      "change1d": 27.39,
+      "change7d": 12.53,
+      "change1m": 56.51,
       "slug": "uniswap-v4",
       "methodology": {
         "UserFees": "Swap fees paid by users.",
@@ -41,34 +41,7 @@
         "HoldersRevenue": "No revenue for UNI holders.",
         "SupplySideRevenue": "All fees are distributed to LPs."
       },
-      "marketShare": 22.0
-    },
-    {
-      "name": "Aerodrome Slipstream",
-      "displayName": "Aerodrome Slipstream",
-      "logo": "https://icons.llamao.fi/icons/protocols/aerodrome.png",
-      "category": "Dexs",
-      "chains": [
-        "Base"
-      ],
-      "total24h": 564620612,
-      "total7d": 2474116382,
-      "total30d": 12962399873,
-      "totalAllTime": 348836053350,
-      "change1d": -0.82,
-      "change7d": 66.46,
-      "change1m": 105.89,
-      "slug": "aerodrome-slipstream",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Total swap fees paid by traders. Per-pool fee rate read from CLPool.fee() (tickSpacing-based default, customizable) applied to each swap's input amount.",
-        "Revenue": "veAERO holders' share of swap fees, equal to HoldersRevenue (Aerodrome's zero-leak model routes all protocol revenue to voters).",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Sum of (a) staked-LP fees and (b) the unstaked-LP rake (CLFactory.getUnstakedFee, default 10% of unstaked share), both routed into the gauge's CLPool.gaugeFees() accumulator. Measured on-chain as gaugeFees(toBlock) − gaugeFees(fromBlock) plus CollectFees event amounts (which drain the accumulator each Voter.distribute call).",
-        "SupplySideRevenue": "Unstaked LPs' net share of swap fees after the rake, accruing via the pool's feeGrowthGlobal. Computed per pool as Fees − HoldersRevenue.",
-        "BribesRevenue": "External bribes deposited to BribeVotingReward contracts (NotifyReward events filtered to slipstream GaugeFactories). Pre-launch tokens are priced via hardcoded conversion rates until each token's cutoff timestamp; afterwards DefiLlama spot pricing is used."
-      },
-      "marketShare": 16.5
+      "marketShare": 22.9
     },
     {
       "name": "PancakeSwap AMM V3",
@@ -87,13 +60,13 @@
         "Solana",
         "Monad"
       ],
-      "total24h": 479624616,
-      "total7d": 3507094881,
-      "total30d": 17554068844,
-      "totalAllTime": 886693794309,
-      "change1d": -41.16,
-      "change7d": 37.11,
-      "change1m": 18.57,
+      "total24h": 636306132,
+      "total7d": 3631744432,
+      "total30d": 17612288869,
+      "totalAllTime": 887330100441,
+      "change1d": 32.67,
+      "change7d": 24.36,
+      "change1m": 10.07,
       "slug": "pancakeswap-amm-v3",
       "methodology": {
         "UserFees": "All trading fees paid by users",
@@ -103,7 +76,34 @@
         "HoldersRevenue": "Swap fees collected by Pancakeswap used for buyback and burn CAKE",
         "SupplySideRevenue": "Fees distributed to LPs"
       },
-      "marketShare": 14.0
+      "marketShare": 15.9
+    },
+    {
+      "name": "Aerodrome Slipstream",
+      "displayName": "Aerodrome Slipstream",
+      "logo": "https://icons.llamao.fi/icons/protocols/aerodrome.png",
+      "category": "Dexs",
+      "chains": [
+        "Base"
+      ],
+      "total24h": 468724388,
+      "total7d": 2563126271,
+      "total30d": 13072145883,
+      "totalAllTime": 349263356669,
+      "change1d": 4.83,
+      "change7d": 7.95,
+      "change1m": 13.37,
+      "slug": "aerodrome-slipstream",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Total swap fees paid by traders. Per-pool fee rate read from CLPool.fee() (tickSpacing-based default, customizable) applied to each swap's input amount.",
+        "Revenue": "veAERO holders' share of swap fees, equal to HoldersRevenue (Aerodrome's zero-leak model routes all protocol revenue to voters).",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Sum of (a) staked-LP fees and (b) the unstaked-LP rake (CLFactory.getUnstakedFee, default 10% of unstaked share), both routed into the gauge's CLPool.gaugeFees() accumulator. Measured on-chain as gaugeFees(toBlock) − gaugeFees(fromBlock) plus CollectFees event amounts (which drain the accumulator each Voter.distribute call).",
+        "SupplySideRevenue": "Unstaked LPs' net share of swap fees after the rake, accruing via the pool's feeGrowthGlobal. Computed per pool as Fees − HoldersRevenue.",
+        "BribesRevenue": "External bribes deposited to BribeVotingReward contracts (NotifyReward events filtered to slipstream GaugeFactories). Pre-launch tokens are priced via hardcoded conversion rates until each token's cutoff timestamp; afterwards DefiLlama spot pricing is used."
+      },
+      "marketShare": 11.7
     },
     {
       "name": "Uniswap V3",
@@ -153,13 +153,13 @@
         "X Layer",
         "Zora"
       ],
-      "total24h": 428419272,
-      "total7d": 3169236000,
-      "total30d": 16173364060,
-      "totalAllTime": 2719073186348,
-      "change1d": -47.76,
-      "change7d": 7.04,
-      "change1m": 48.78,
+      "total24h": 451667969,
+      "total7d": 3025633644,
+      "total30d": 15957835036,
+      "totalAllTime": 2719524854317,
+      "change1d": 5.43,
+      "change7d": -24.12,
+      "change1m": -32.3,
       "slug": "uniswap-v3",
       "methodology": {
         "UserFees": "User pays fees on each swap.",
@@ -169,60 +169,26 @@
         "HoldersRevenue": "From 28 Dec 2025, a portion of fees a collected to buy back and burn UNI on Ethereum, From 8 Mar 2026, a portion of fees a collected to buy back and burn UNI on Optimism, Arbitrum, Base, Celo, WC, Zora, XLayer.",
         "SupplySideRevenue": "Fees distributed to LPs post protocol fee collection"
       },
-      "marketShare": 12.5
+      "marketShare": 11.3
     },
     {
-      "name": "BisonFi",
-      "displayName": "BisonFi",
-      "logo": "https://icons.llamao.fi/icons/protocols/bisonfi.jpg",
-      "category": "Dexs",
+      "name": "Figure Markets Exchange",
+      "displayName": "Figure Markets Exchange",
+      "logo": "https://icons.llamao.fi/icons/protocols/figure-markets-exchange.jpg",
+      "category": "OTC Marketplace",
       "chains": [
-        "Solana"
+        "Provenance"
       ],
-      "total24h": 239328033,
-      "total7d": 1195626202,
-      "total30d": 5867523838,
-      "totalAllTime": 47404534641,
-      "change1d": -26.71,
-      "change7d": -68.52,
-      "change1m": 133.43,
-      "slug": "bisonfi",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      },
-      "marketShare": 7.0
-    },
-    {
-      "name": "Orca DEX",
-      "displayName": "Orca DEX",
-      "logo": "https://icons.llamao.fi/icons/protocols/orca-dex.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana",
-        "Eclipse"
-      ],
-      "total24h": 219472514,
-      "total7d": 1025252546,
-      "total30d": 5740148156,
-      "totalAllTime": 468466577800,
-      "change1d": -2.21,
-      "change7d": 55.03,
-      "change1m": 84.62,
-      "slug": "orca-dex",
-      "methodology": {
-        "UserFees": "All fees paid by users",
-        "Fees": "All fees paid by users",
-        "Revenue": "Revenue going to protocol treasury",
-        "ProtocolRevenue": "Revenue going to protocol treasury",
-        "HoldersRevenue": "20% of protocol fees allocated for xORCA holder buybacks and burns.",
-        "SupplySideRevenue": "Revenue earned by LPs (87% of total fees)"
-      },
-      "marketShare": 6.4
+      "total24h": 371578445,
+      "total7d": 433056208,
+      "total30d": 1800067143,
+      "totalAllTime": 8497709301,
+      "change1d": 582.92,
+      "change7d": 386.3,
+      "change1m": 730.48,
+      "slug": "figure-markets-exchange",
+      "methodology": {},
+      "marketShare": 9.3
     },
     {
       "name": "Fluid DEX",
@@ -236,13 +202,13 @@
         "Base",
         "Plasma"
       ],
-      "total24h": 199867642,
-      "total7d": 1206548088,
-      "total30d": 7898860734,
-      "totalAllTime": 214388571132,
-      "change1d": 4.57,
-      "change7d": -43.78,
-      "change1m": 104.86,
+      "total24h": 311895312,
+      "total7d": 1128791413,
+      "total30d": 7929292380,
+      "totalAllTime": 214727704519,
+      "change1d": 84.19,
+      "change7d": 2.31,
+      "change1m": 58.58,
       "slug": "fluid-dex",
       "methodology": {
         "UserFees": "Users pay fees per swap.",
@@ -253,7 +219,79 @@
         "SupplySideRevenue": "Amount of swap fees distributed to LPs.",
         "Volume": "Total token swap volume across all Fluid Dex pools."
       },
-      "marketShare": 5.9
+      "marketShare": 7.8
+    },
+    {
+      "name": "BisonFi",
+      "displayName": "BisonFi",
+      "logo": "https://icons.llamao.fi/icons/protocols/bisonfi.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 264653591,
+      "total7d": 1338316579,
+      "total30d": 5889046298,
+      "totalAllTime": 47669188232,
+      "change1d": 10.58,
+      "change7d": 116.99,
+      "change1m": 8.85,
+      "slug": "bisonfi",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      },
+      "marketShare": 6.6
+    },
+    {
+      "name": "Orca DEX",
+      "displayName": "Orca DEX",
+      "logo": "https://icons.llamao.fi/icons/protocols/orca-dex.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana",
+        "Eclipse"
+      ],
+      "total24h": 242165358,
+      "total7d": 1046464256,
+      "total30d": 5690868891,
+      "totalAllTime": 468700611652,
+      "change1d": 60.05,
+      "change7d": 27.37,
+      "change1m": -7.08,
+      "slug": "orca-dex",
+      "methodology": {
+        "UserFees": "All fees paid by users",
+        "Fees": "All fees paid by users",
+        "Revenue": "Revenue going to protocol treasury",
+        "ProtocolRevenue": "Revenue going to protocol treasury",
+        "HoldersRevenue": "20% of protocol fees allocated for xORCA holder buybacks and burns.",
+        "SupplySideRevenue": "Revenue earned by LPs (87% of total fees)"
+      },
+      "marketShare": 6.0
+    },
+    {
+      "name": "Kalshi",
+      "displayName": "Kalshi",
+      "logo": "https://icons.llamao.fi/icons/protocols/kalshi.jpg",
+      "category": "Prediction Market",
+      "chains": [
+        "Off Chain"
+      ],
+      "total24h": 181940433,
+      "total7d": 1325128649,
+      "total30d": 5508256849,
+      "totalAllTime": 30852855508,
+      "change1d": 2.55,
+      "change7d": -10,
+      "change1m": 1.14,
+      "slug": "kalshi",
+      "methodology": {},
+      "marketShare": 4.5
     },
     {
       "name": "PancakeSwap Infinity",
@@ -264,13 +302,13 @@
         "BSC",
         "Base"
       ],
-      "total24h": 195305962,
-      "total7d": 1181157557,
-      "total30d": 5439136903,
-      "totalAllTime": 79426946250,
-      "change1d": -0.55,
-      "change7d": 23.75,
-      "change1m": 48.13,
+      "total24h": 166984776,
+      "total7d": 1257206525,
+      "total30d": 5517042129,
+      "totalAllTime": 79611835337,
+      "change1d": 2.98,
+      "change7d": 21.74,
+      "change1m": 23.41,
       "slug": "pancakeswap-infinity",
       "methodology": {
         "UserFees": "Swap fees paid by users",
@@ -280,26 +318,7 @@
         "HoldersRevenue": "Money going to governance token holders",
         "SupplySideRevenue": "Liquidity providers revenue"
       },
-      "marketShare": 5.7
-    },
-    {
-      "name": "Kalshi",
-      "displayName": "Kalshi",
-      "logo": "https://icons.llamao.fi/icons/protocols/kalshi.jpg",
-      "category": "Prediction Market",
-      "chains": [
-        "Off Chain"
-      ],
-      "total24h": 177409033,
-      "total7d": 1345354617,
-      "total30d": 5506200638,
-      "totalAllTime": 30670915075,
-      "change1d": -11.05,
-      "change7d": 7.5,
-      "change1m": -15.23,
-      "slug": "kalshi",
-      "methodology": {},
-      "marketShare": 5.2
+      "marketShare": 4.2
     },
     {
       "name": "Raydium AMM",
@@ -309,13 +328,13 @@
       "chains": [
         "Solana"
       ],
-      "total24h": 159984306,
-      "total7d": 846089048,
-      "total30d": 4388136034,
-      "totalAllTime": 702979496280,
-      "change1d": -5.05,
-      "change7d": 28.55,
-      "change1m": 47.94,
+      "total24h": 159233186,
+      "total7d": 862490295,
+      "total30d": 4406934334,
+      "totalAllTime": 703132895596,
+      "change1d": 13.41,
+      "change7d": 15.6,
+      "change1m": 17.64,
       "slug": "raydium-amm",
       "methodology": {
         "UserFees": "Total fees paid by users. Varies by pool: 0.25% for AMM, variable tiers for CLMM/CPMM.",
@@ -324,32 +343,6 @@
         "ProtocolRevenue": "Fees allocated to the Raydium Treasury (4% from CLMM/CPMM pools, 0% from AMM).",
         "HoldersRevenue": "Fees allocated to RAY token buybacks (12% across all pool types).",
         "SupplySideRevenue": "Fees allocated to liquidity providers (88% for AMM, 84% for CLMM/CPMM)."
-      },
-      "marketShare": 4.7
-    },
-    {
-      "name": "Meteora DLMM",
-      "displayName": "Meteora DLMM",
-      "logo": "https://icons.llamao.fi/icons/protocols/meteora.png",
-      "category": "Dexs",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 145599019,
-      "total7d": 732235665,
-      "total30d": 3307998659,
-      "totalAllTime": 202229233067,
-      "change1d": -3.17,
-      "change7d": 40.53,
-      "change1m": 98.63,
-      "slug": "meteora-dlmm",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
       }
     },
     {
@@ -360,13 +353,13 @@
       "chains": [
         "Solana"
       ],
-      "total24h": 139368263,
-      "total7d": 851952691,
-      "total30d": 2398065866,
-      "totalAllTime": 26876147819,
-      "change1d": 0.33,
-      "change7d": 12.21,
-      "change1m": 384.39,
+      "total24h": 155387164,
+      "total7d": 887391939,
+      "total30d": 2510128461,
+      "totalAllTime": 27031534983,
+      "change1d": 11.49,
+      "change7d": 29.55,
+      "change1m": 258.66,
       "slug": "goonfi",
       "methodology": {
         "UserFees": "Swap fees paid by users",
@@ -378,28 +371,28 @@
       }
     },
     {
-      "name": "Hyperliquid Spot Orderbook",
-      "displayName": "Hyperliquid Spot Orderbook",
-      "logo": "https://icons.llamao.fi/icons/protocols/hyperliquid.png",
+      "name": "Meteora DLMM",
+      "displayName": "Meteora DLMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/meteora.png",
       "category": "Dexs",
       "chains": [
-        "Hyperliquid L1"
+        "Solana"
       ],
-      "total24h": 138979501,
-      "total7d": 704896559,
-      "total30d": 3291557186,
-      "totalAllTime": 147841147376,
-      "change1d": 0.58,
-      "change7d": 52.94,
-      "change1m": 141.67,
-      "slug": "hyperliquid-spot-orderbook",
+      "total24h": 151678754,
+      "total7d": 745455326,
+      "total30d": 3359994598,
+      "totalAllTime": 202370498720,
+      "change1d": 9.24,
+      "change7d": 24.36,
+      "change1m": 82.33,
+      "slug": "meteora-dlmm",
       "methodology": {
         "UserFees": "Swap fees paid by users",
-        "Fees": "Include spot trading fees and unit protocol fees, excluding perps fees.",
-        "Revenue": "99% of fees go to Assistance Fund for buying HYPE tokens, excluding unit protocol fees.",
-        "ProtocolRevenue": "Protocol doesn't keep any fees.",
-        "HoldersRevenue": "99% of fees go to Assistance Fund for buying HYPE tokens, excluding unit protocol fees.",
-        "SupplySideRevenue": "1% of fees go to HLP Vault suppliers, before 30 Aug 2025 it was 3% + fees for unit protocol."
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
       }
     },
     {
@@ -427,13 +420,13 @@
         "Monad",
         "Stable"
       ],
-      "total24h": 134483135,
-      "total7d": 1114714639,
-      "total30d": 5678269642,
-      "totalAllTime": 336149651186,
-      "change1d": -38.8,
-      "change7d": 0.91,
-      "change1m": 245.25,
+      "total24h": 140475817,
+      "total7d": 1054186784,
+      "total30d": 5549179746,
+      "totalAllTime": 336262024072,
+      "change1d": -20.71,
+      "change7d": -15.84,
+      "change1m": -40.34,
       "slug": "curve-dex",
       "methodology": {
         "UserFees": "Trading and liquidity fees paid by users",
@@ -445,6 +438,31 @@
       }
     },
     {
+      "name": "Hyperliquid Spot Orderbook",
+      "displayName": "Hyperliquid Spot Orderbook",
+      "logo": "https://icons.llamao.fi/icons/protocols/hyperliquid.png",
+      "category": "Dexs",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 131146721,
+      "total7d": 730246388,
+      "total30d": 3329818514,
+      "totalAllTime": 147972294097,
+      "change1d": -5.64,
+      "change7d": 23.96,
+      "change1m": 41.19,
+      "slug": "hyperliquid-spot-orderbook",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Include spot trading fees and unit protocol fees, excluding perps fees.",
+        "Revenue": "99% of fees go to Assistance Fund for buying HYPE tokens, excluding unit protocol fees.",
+        "ProtocolRevenue": "Protocol doesn't keep any fees.",
+        "HoldersRevenue": "99% of fees go to Assistance Fund for buying HYPE tokens, excluding unit protocol fees.",
+        "SupplySideRevenue": "1% of fees go to HLP Vault suppliers, before 30 Aug 2025 it was 3% + fees for unit protocol."
+      }
+    },
+    {
       "name": "Manifest Trade",
       "displayName": "Manifest Trade",
       "logo": "https://icons.llamao.fi/icons/protocols/manifest-trade.jpg",
@@ -452,14 +470,39 @@
       "chains": [
         "Solana"
       ],
-      "total24h": 121943103,
-      "total7d": 602634403,
-      "total30d": 3436192411,
-      "totalAllTime": 17669160351,
-      "change1d": 17.93,
-      "change7d": -56.9,
-      "change1m": 38.45,
+      "total24h": 122662538,
+      "total7d": 628471024,
+      "total30d": 3415956444,
+      "totalAllTime": 17787040081,
+      "change1d": 1.12,
+      "change7d": 34.32,
+      "change1m": -10.72,
       "slug": "manifest-trade",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "HumidiFi",
+      "displayName": "HumidiFi",
+      "logo": "https://icons.llamao.fi/icons/protocols/humidifi.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 103498087,
+      "total7d": 452195466,
+      "total30d": 2485118800,
+      "totalAllTime": 195188611117,
+      "change1d": 38.05,
+      "change7d": 54.68,
+      "change1m": -28.65,
+      "slug": "humidifi",
       "methodology": {
         "UserFees": "Swap fees paid by users",
         "Fees": "Swap fees paid by users",
@@ -477,32 +520,104 @@
       "chains": [
         "Polygon"
       ],
-      "total24h": 83842780,
-      "total7d": 716875160,
-      "total30d": 3936580103,
-      "totalAllTime": 31463991094,
-      "change1d": -7.66,
-      "change7d": -28.34,
-      "change1m": -44.89,
+      "total24h": 90735702,
+      "total7d": 686777022,
+      "total30d": 3889699918,
+      "totalAllTime": 31554726796,
+      "change1d": 8.22,
+      "change7d": -24.91,
+      "change1m": -34.07,
       "slug": "polymarket-international",
       "methodology": {}
     },
     {
-      "name": "ZeroFi",
-      "displayName": "ZeroFi",
-      "logo": "https://icons.llamao.fi/icons/protocols/zerofi.jpg",
+      "name": "NEAR Intents",
+      "displayName": "NEAR Intents",
+      "logo": "https://icons.llamao.fi/icons/protocols/near-intents.jpg",
+      "category": "Cross Chain Bridge",
+      "chains": [
+        "Near"
+      ],
+      "total24h": 80624180,
+      "total7d": 409246506,
+      "total30d": 1778360331,
+      "totalAllTime": 18096068947,
+      "change1d": 14.57,
+      "change7d": 41.91,
+      "change1m": 13.31,
+      "slug": "near-intents",
+      "methodology": {}
+    },
+    {
+      "name": "PumpSwap",
+      "displayName": "PumpSwap",
+      "logo": "https://icons.llamao.fi/icons/protocols/pumpswap.jpg",
       "category": "Dexs",
       "chains": [
         "Solana"
       ],
-      "total24h": 81037685,
-      "total7d": 408536149,
-      "total30d": 1247965368,
-      "totalAllTime": 61720995531,
-      "change1d": 6.47,
-      "change7d": -8.42,
-      "change1m": 612.64,
-      "slug": "zerofi",
+      "total24h": 69135103,
+      "total7d": 401926211,
+      "total30d": 1819473359,
+      "totalAllTime": 71035155241,
+      "change1d": 44.18,
+      "change7d": -16.24,
+      "change1m": 80,
+      "slug": "pumpswap",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue",
+        "Volume": "Volume is the total volume of all pools on PumpSwap where the quote token is SOL, mSOL, USDC, USDT, PUNP, or BONK, and the pool has TVL >= $5,000 and at least 50 unique traders. This filters out wash trading pools."
+      }
+    },
+    {
+      "name": "pump.fun",
+      "displayName": "pump.fun",
+      "logo": "https://icons.llamao.fi/icons/protocols/pump.fun.jpg",
+      "category": "Launchpad",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 64577811,
+      "total7d": 441995304,
+      "total30d": 1564951755,
+      "totalAllTime": 88981704699,
+      "change1d": 9.17,
+      "change7d": -7.12,
+      "change1m": 21.3,
+      "slug": "pump.fun",
+      "methodology": {}
+    },
+    {
+      "name": "DODO AMM",
+      "displayName": "DODO AMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/dodo-amm.jpg",
+      "category": "Dexs",
+      "chains": [
+        "BSC",
+        "Ethereum",
+        "Aurora",
+        "Polygon",
+        "Arbitrum",
+        "Avalanche",
+        "OP Mainnet",
+        "Scroll",
+        "Linea",
+        "Base",
+        "Manta"
+      ],
+      "total24h": 61484968,
+      "total7d": 303552539,
+      "total30d": 1536923184,
+      "totalAllTime": 202141010455,
+      "change1d": 72.11,
+      "change7d": 53.3,
+      "change1m": 24.18,
+      "slug": "dodo-amm",
       "methodology": {
         "UserFees": "Swap fees paid by users",
         "Fees": "Swap fees paid by users",
@@ -529,13 +644,13 @@
         "Aptos",
         "Monad"
       ],
-      "total24h": 76521315,
-      "total7d": 465208648,
-      "total30d": 1496252805,
-      "totalAllTime": 608905960826,
-      "change1d": -26.42,
-      "change7d": 158.94,
-      "change1m": 70.75,
+      "total24h": 60652625,
+      "total7d": 469794930,
+      "total30d": 1482967607,
+      "totalAllTime": 608966613451,
+      "change1d": -20.74,
+      "change7d": 8.18,
+      "change1m": -17.97,
       "slug": "pancakeswap-amm",
       "methodology": {
         "UserFees": "User pays 0.25% fees on each swap.",
@@ -547,21 +662,56 @@
       }
     },
     {
-      "name": "HumidiFi",
-      "displayName": "HumidiFi",
-      "logo": "https://icons.llamao.fi/icons/protocols/humidifi.jpg",
+      "name": "Tessera V",
+      "displayName": "Tessera V",
+      "logo": "https://icons.llamao.fi/icons/protocols/tessera-v.jpg",
       "category": "Dexs",
       "chains": [
-        "Solana"
+        "Solana",
+        "Base",
+        "BSC"
       ],
-      "total24h": 74971046,
-      "total7d": 415606365,
-      "total30d": 2526669627,
-      "totalAllTime": 195085113030,
-      "change1d": -15.17,
-      "change7d": 11.99,
-      "change1m": -4.28,
-      "slug": "humidifi",
+      "total24h": 59672059,
+      "total7d": 322151485,
+      "total30d": 2191141147,
+      "totalAllTime": 64551078635,
+      "change1d": 29.72,
+      "change7d": -11.68,
+      "change1m": -66.81,
+      "slug": "tessera-v",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue",
+        "Volume": "Volume is calculated from swap events on Tessera contracts."
+      }
+    },
+    {
+      "name": "Native Swap",
+      "displayName": "Native Swap",
+      "logo": "https://icons.llamao.fi/icons/protocols/native-swap.jpg",
+      "category": "Dexs",
+      "chains": [
+        "BSC",
+        "Ethereum",
+        "Polygon",
+        "Arbitrum",
+        "Avalanche",
+        "Mantle",
+        "Base",
+        "ZetaChain"
+      ],
+      "total24h": 58485127,
+      "total7d": 443547872,
+      "total30d": 2146668950,
+      "totalAllTime": 25868442694,
+      "change1d": -33.22,
+      "change7d": -5.61,
+      "change1m": -5.71,
+      "slug": "native-swap",
       "methodology": {
         "UserFees": "Swap fees paid by users",
         "Fees": "Swap fees paid by users",
@@ -580,161 +730,16 @@
         "Ethereum",
         "BSC"
       ],
-      "total24h": 72853802,
-      "total7d": 219363263,
-      "total30d": 808745334,
-      "totalAllTime": 5333845591,
-      "change1d": 19.93,
-      "change7d": 2.69,
-      "change1m": null,
+      "total24h": 55819302,
+      "total7d": 257607635,
+      "total30d": 867648484,
+      "totalAllTime": 5391545902,
+      "change1d": 16.83,
+      "change7d": 52.97,
+      "change1m": 252.58,
       "slug": "ondo-global-markets",
       "methodology": {
         "Volume": "Trade volume of ondo tokenized stocks on ondo global markets exchange"
-      }
-    },
-    {
-      "name": "NEAR Intents",
-      "displayName": "NEAR Intents",
-      "logo": "https://icons.llamao.fi/icons/protocols/near-intents.jpg",
-      "category": "Cross Chain Bridge",
-      "chains": [
-        "Near"
-      ],
-      "total24h": 70373098,
-      "total7d": 385436538,
-      "total30d": 1768889423,
-      "totalAllTime": 18015444767,
-      "change1d": 9.85,
-      "change7d": 44.01,
-      "change1m": -0.77,
-      "slug": "near-intents",
-      "methodology": {}
-    },
-    {
-      "name": "Native Swap",
-      "displayName": "Native Swap",
-      "logo": "https://icons.llamao.fi/icons/protocols/native-swap.jpg",
-      "category": "Dexs",
-      "chains": [
-        "BSC",
-        "Ethereum",
-        "Polygon",
-        "Arbitrum",
-        "Avalanche",
-        "Mantle",
-        "Base",
-        "ZetaChain"
-      ],
-      "total24h": 63975190,
-      "total7d": 446387474,
-      "total30d": 2149573317,
-      "totalAllTime": 25814809319,
-      "change1d": -18.05,
-      "change7d": 15.28,
-      "change1m": 70.12,
-      "slug": "native-swap",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "pump.fun",
-      "displayName": "pump.fun",
-      "logo": "https://icons.llamao.fi/icons/protocols/pump.fun.jpg",
-      "category": "Launchpad",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 59152270,
-      "total7d": 446942217,
-      "total30d": 1553610398,
-      "totalAllTime": 88917126888,
-      "change1d": -11.14,
-      "change7d": 68.09,
-      "change1m": 35.26,
-      "slug": "pump.fun",
-      "methodology": {}
-    },
-    {
-      "name": "SUNSwap V3",
-      "displayName": "SUNSwap V3",
-      "logo": "https://icons.llamao.fi/icons/protocols/sunswap-v3.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Tron"
-      ],
-      "total24h": 58182712,
-      "total7d": 368171504,
-      "total30d": 1397929276,
-      "totalAllTime": 58625624048,
-      "change1d": 17.25,
-      "change7d": 44.59,
-      "change1m": 90.2,
-      "slug": "sunswap-v3",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "Project X",
-      "displayName": "Project X",
-      "logo": "https://icons.llamao.fi/icons/protocols/project-x.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Hyperliquid L1"
-      ],
-      "total24h": 57512509,
-      "total7d": 271750279,
-      "total30d": 1624998307,
-      "totalAllTime": 31013576417,
-      "change1d": 8.34,
-      "change7d": 43.08,
-      "change1m": 160.85,
-      "slug": "project-x",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "Joe V2.2",
-      "displayName": "Joe V2.2",
-      "logo": "https://icons.llamao.fi/icons/protocols/joe-v2.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Avalanche",
-        "Arbitrum",
-        "Monad"
-      ],
-      "total24h": 56110686,
-      "total7d": 201895093,
-      "total30d": 1352756073,
-      "totalAllTime": 40763895024,
-      "change1d": 72.86,
-      "change7d": 418.58,
-      "change1m": 72.24,
-      "slug": "joe-v2.2",
-      "methodology": {
-        "UserFees": "Total swap fees typically range from 0.01% up to 0.8% of the total amount paid by users.",
-        "Fees": "Total swap fees typically range from 0.01% up to 0.8% of the total amount paid by users.",
-        "Revenue": "Share of amount of swap fees.",
-        "ProtocolRevenue": "No protocol fees.",
-        "HoldersRevenue": "All revenue distributed to sJOE stakers",
-        "SupplySideRevenue": "Liquidity providers revenue"
       }
     },
     {
@@ -753,13 +758,13 @@
         "Hyperliquid L1",
         "Monad"
       ],
-      "total24h": 51619767,
-      "total7d": 366513932,
-      "total30d": 1604186628,
-      "totalAllTime": 1851000440,
-      "change1d": -29.84,
-      "change7d": -38.15,
-      "change1m": 355.53,
+      "total24h": 51680979,
+      "total7d": 371169404,
+      "total30d": 1601285542,
+      "totalAllTime": 1901042036,
+      "change1d": 37.55,
+      "change7d": 14.02,
+      "change1m": -2.27,
       "slug": "metric",
       "methodology": {
         "UserFees": "Swap fees paid by users",
@@ -779,326 +784,14 @@
       "chains": [
         "Solana"
       ],
-      "total24h": 49530492,
-      "total7d": 494232266,
-      "total30d": 1446584552,
-      "totalAllTime": 3674514825,
-      "change1d": -68.16,
-      "change7d": -40.47,
-      "change1m": 206.87,
+      "total24h": 49436309,
+      "total7d": 483914618,
+      "total30d": 1475839679,
+      "totalAllTime": 3723951134,
+      "change1d": -0.19,
+      "change7d": -17.27,
+      "change1m": 144.96,
       "slug": "scorch",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "PumpSwap",
-      "displayName": "PumpSwap",
-      "logo": "https://icons.llamao.fi/icons/protocols/pumpswap.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 47951843,
-      "total7d": 415327660,
-      "total30d": 1788747001,
-      "totalAllTime": 70966020138,
-      "change1d": 1.47,
-      "change7d": -34.81,
-      "change1m": 19.64,
-      "slug": "pumpswap",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue",
-        "Volume": "Volume is the total volume of all pools on PumpSwap where the quote token is SOL, mSOL, USDC, USDT, PUNP, or BONK, and the pool has TVL >= $5,000 and at least 50 unique traders. This filters out wash trading pools."
-      }
-    },
-    {
-      "name": "Flashnet",
-      "displayName": "Flashnet",
-      "logo": "https://icons.llamao.fi/icons/protocols/flashnet.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Spark"
-      ],
-      "total24h": 46117414,
-      "total7d": 260061331,
-      "total30d": 802037426,
-      "totalAllTime": 1411343853,
-      "change1d": -9.45,
-      "change7d": 14.84,
-      "change1m": 469.85,
-      "slug": "flashnet",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue",
-        "Volume": "Flashnet DEX volume"
-      }
-    },
-    {
-      "name": "Tessera V",
-      "displayName": "Tessera V",
-      "logo": "https://icons.llamao.fi/icons/protocols/tessera-v.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana",
-        "Base",
-        "BSC"
-      ],
-      "total24h": 46000789,
-      "total7d": 330043026,
-      "total30d": 2311261518,
-      "totalAllTime": 64491406576,
-      "change1d": -34.45,
-      "change7d": -57.21,
-      "change1m": -55.89,
-      "slug": "tessera-v",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue",
-        "Volume": "Volume is calculated from swap events on Tessera contracts."
-      }
-    },
-    {
-      "name": "AlphaQ",
-      "displayName": "AlphaQ",
-      "logo": "https://icons.llamao.fi/icons/protocols/alphaq.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 45147438,
-      "total7d": 282579905,
-      "total30d": 1872380604,
-      "totalAllTime": 21452962009,
-      "change1d": 5.95,
-      "change7d": -53.22,
-      "change1m": -37.9,
-      "slug": "alphaq",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Flat 0.001% fee per swap on major pairs.",
-        "Revenue": "All fees are revenue collected by AlphaQ.",
-        "ProtocolRevenue": "All fees are revenue collected by AlphaQ.",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "Blackhole CLMM",
-      "displayName": "Blackhole CLMM",
-      "logo": "https://icons.llamao.fi/icons/protocols/blackhole-clmm.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Avalanche"
-      ],
-      "total24h": 40735545,
-      "total7d": 160049387,
-      "total30d": 961288245,
-      "totalAllTime": 29627900701,
-      "change1d": 8.72,
-      "change7d": 131.52,
-      "change1m": 46.15,
-      "slug": "blackhole-clmm",
-      "methodology": {
-        "UserFees": "All swap fees paid by users.",
-        "Fees": "All swap fees paid by users.",
-        "Revenue": "All swap fees are revenue.",
-        "ProtocolRevenue": "Protocol makes no revenue.",
-        "HoldersRevenue": "All revenue is distributed to veBlack holders.",
-        "SupplySideRevenue": "No fees distributed to LPs."
-      }
-    },
-    {
-      "name": "STON.fi",
-      "displayName": "STON.fi",
-      "logo": "https://icons.llamao.fi/icons/protocols/ston.fi.png",
-      "category": "Dexs",
-      "chains": [
-        "TON"
-      ],
-      "total24h": 40705416,
-      "total7d": 65616864,
-      "total30d": 124228854,
-      "totalAllTime": 8044435993,
-      "change1d": 166.48,
-      "change7d": 2641.4,
-      "change1m": 3233.01,
-      "slug": "ston.fi",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "Figure Markets Exchange",
-      "displayName": "Figure Markets Exchange",
-      "logo": "https://icons.llamao.fi/icons/protocols/figure-markets-exchange.jpg",
-      "category": "OTC Marketplace",
-      "chains": [
-        "Provenance"
-      ],
-      "total24h": 40593467,
-      "total7d": 468743750,
-      "total30d": 1804087680,
-      "totalAllTime": 8126002455,
-      "change1d": 57.62,
-      "change7d": -56.71,
-      "change1m": 5415.55,
-      "slug": "figure-markets-exchange",
-      "methodology": {}
-    },
-    {
-      "name": "Ekubo",
-      "displayName": "Ekubo",
-      "logo": "https://icons.llamao.fi/icons/protocols/ekubo.png",
-      "category": "Dexs",
-      "chains": [
-        "Starknet",
-        "Ethereum"
-      ],
-      "total24h": 38314727,
-      "total7d": 229351635,
-      "total30d": 1404301848,
-      "totalAllTime": 59380918761,
-      "change1d": -10.35,
-      "change7d": -8.91,
-      "change1m": 36.34,
-      "slug": "ekubo",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users per swap.",
-        "Revenue": "A partition of swap fees and withdrawal fees charged by Ekubo.",
-        "ProtocolRevenue": "Ekubo protocol collects revenue on Ethereum.",
-        "HoldersRevenue": "Amount of fees used to buy back and burn EKUBO tokens on Starknet.",
-        "SupplySideRevenue": "Amount of fees distributed to liquidity providers."
-      }
-    },
-    {
-      "name": "Pendle",
-      "displayName": "Pendle",
-      "logo": "https://icons.llamao.fi/icons/protocols/pendle.jpg",
-      "category": "Yield",
-      "chains": [
-        "Ethereum",
-        "Arbitrum",
-        "Mantle",
-        "BSC",
-        "OP Mainnet"
-      ],
-      "total24h": 36904649,
-      "total7d": 156954025,
-      "total30d": 674942380,
-      "totalAllTime": 54373711169,
-      "change1d": 78.52,
-      "change7d": 69.06,
-      "change1m": 364.24,
-      "slug": "pendle",
-      "methodology": {
-        "UserFees": "Pays management + performance fees",
-        "Fees": "Yield",
-        "Revenue": "Management + performance fees",
-        "ProtocolRevenue": "Gets management + performance fees",
-        "SupplySideRevenue": "Generated yield excluding protocol fees"
-      }
-    },
-    {
-      "name": "Jupiterz",
-      "displayName": "Jupiterz",
-      "logo": "https://icons.llamao.fi/icons/protocols/jupiterz.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 35934270,
-      "total7d": 165452436,
-      "total30d": 966613315,
-      "totalAllTime": 30660225602,
-      "change1d": 27.71,
-      "change7d": -9.38,
-      "change1m": 126.19,
-      "slug": "jupiterz",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "DODO AMM",
-      "displayName": "DODO AMM",
-      "logo": "https://icons.llamao.fi/icons/protocols/dodo-amm.jpg",
-      "category": "Dexs",
-      "chains": [
-        "BSC",
-        "Ethereum",
-        "Aurora",
-        "Polygon",
-        "Arbitrum",
-        "Avalanche",
-        "OP Mainnet",
-        "Scroll",
-        "Linea",
-        "Base",
-        "Manta"
-      ],
-      "total24h": 35724802,
-      "total7d": 282176288,
-      "total30d": 1524949440,
-      "totalAllTime": 202079525487,
-      "change1d": 741.55,
-      "change7d": 27.64,
-      "change1m": 16058.93,
-      "slug": "dodo-amm",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
-      }
-    },
-    {
-      "name": "ThalaSwap V3",
-      "displayName": "ThalaSwap V3",
-      "logo": "https://icons.llamao.fi/icons/protocols/thalaswap-v3.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Aptos"
-      ],
-      "total24h": 35457601,
-      "total7d": 148863448,
-      "total30d": 282382194,
-      "totalAllTime": 2023974971,
-      "change1d": 40.28,
-      "change7d": 210.18,
-      "change1m": 666.13,
-      "slug": "thalaswap-v3",
       "methodology": {
         "UserFees": "Swap fees paid by users",
         "Fees": "Swap fees paid by users",
@@ -1116,13 +809,13 @@
       "chains": [
         "Solana"
       ],
-      "total24h": 34382858,
-      "total7d": 245508941,
-      "total30d": 1201821560,
-      "totalAllTime": 38445718811,
-      "change1d": -23.22,
-      "change7d": -43.12,
-      "change1m": -14.16,
+      "total24h": 49253653,
+      "total7d": 249464945,
+      "total30d": 1186195530,
+      "totalAllTime": 38494972464,
+      "change1d": 43.25,
+      "change7d": 8.73,
+      "change1m": -24.08,
       "slug": "solfi-v2",
       "methodology": {
         "UserFees": "Swap fees paid by users",
@@ -1130,6 +823,312 @@
         "Revenue": "Percentage of swap fees going to treasury and/or token holders",
         "ProtocolRevenue": "Percentage of swap fees going to treasury",
         "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "Ekubo",
+      "displayName": "Ekubo",
+      "logo": "https://icons.llamao.fi/icons/protocols/ekubo.png",
+      "category": "Dexs",
+      "chains": [
+        "Starknet",
+        "Ethereum"
+      ],
+      "total24h": 47755260,
+      "total7d": 247395735,
+      "total30d": 1406858771,
+      "totalAllTime": 59428674021,
+      "change1d": 24.64,
+      "change7d": 60.73,
+      "change1m": 5.66,
+      "slug": "ekubo",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users per swap.",
+        "Revenue": "A partition of swap fees and withdrawal fees charged by Ekubo.",
+        "ProtocolRevenue": "Ekubo protocol collects revenue on Ethereum.",
+        "HoldersRevenue": "Amount of fees used to buy back and burn EKUBO tokens on Starknet.",
+        "SupplySideRevenue": "Amount of fees distributed to liquidity providers."
+      }
+    },
+    {
+      "name": "SUNSwap V3",
+      "displayName": "SUNSwap V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/sunswap-v3.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Tron"
+      ],
+      "total24h": 47547057,
+      "total7d": 366969093,
+      "total30d": 1412319356,
+      "totalAllTime": 58673171105,
+      "change1d": -18.28,
+      "change7d": -2.47,
+      "change1m": 43.4,
+      "slug": "sunswap-v3",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "ZeroFi",
+      "displayName": "ZeroFi",
+      "logo": "https://icons.llamao.fi/icons/protocols/zerofi.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 45624404,
+      "total7d": 394117795,
+      "total30d": 1266065923,
+      "totalAllTime": 61766619935,
+      "change1d": -43.7,
+      "change7d": -24.01,
+      "change1m": 65.76,
+      "slug": "zerofi",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "AlphaQ",
+      "displayName": "AlphaQ",
+      "logo": "https://icons.llamao.fi/icons/protocols/alphaq.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 44893518,
+      "total7d": 278578982,
+      "total30d": 1798150620,
+      "totalAllTime": 21497855527,
+      "change1d": -0.56,
+      "change7d": -8.18,
+      "change1m": -62.31,
+      "slug": "alphaq",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Flat 0.001% fee per swap on major pairs.",
+        "Revenue": "All fees are revenue collected by AlphaQ.",
+        "ProtocolRevenue": "All fees are revenue collected by AlphaQ.",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "Project X",
+      "displayName": "Project X",
+      "logo": "https://icons.llamao.fi/icons/protocols/project-x.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Hyperliquid L1"
+      ],
+      "total24h": 43481775,
+      "total7d": 282974032,
+      "total30d": 1623546367,
+      "totalAllTime": 31053374709,
+      "change1d": -22.28,
+      "change7d": 2.06,
+      "change1m": -21.34,
+      "slug": "project-x",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "Flashnet",
+      "displayName": "Flashnet",
+      "logo": "https://icons.llamao.fi/icons/protocols/flashnet.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Spark"
+      ],
+      "total24h": 41855297,
+      "total7d": 260819955,
+      "total30d": 828786892,
+      "totalAllTime": 1451337089,
+      "change1d": -2.23,
+      "change7d": -3.77,
+      "change1m": 139.09,
+      "slug": "flashnet",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue",
+        "Volume": "Flashnet DEX volume"
+      }
+    },
+    {
+      "name": "STON.fi",
+      "displayName": "STON.fi",
+      "logo": "https://icons.llamao.fi/icons/protocols/ston.fi.png",
+      "category": "Dexs",
+      "chains": [
+        "TON"
+      ],
+      "total24h": 39957322,
+      "total7d": 106643093,
+      "total30d": 165690815,
+      "totalAllTime": 8086803007,
+      "change1d": 1.22,
+      "change7d": 1812.86,
+      "change1m": 2317.05,
+      "slug": "ston.fi",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "Pharaoh V3",
+      "displayName": "Pharaoh V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/pharaoh-v3.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Avalanche"
+      ],
+      "total24h": 37421808,
+      "total7d": 168783173,
+      "total30d": 921009145,
+      "totalAllTime": 10580752758,
+      "change1d": 39.72,
+      "change7d": 24.37,
+      "change1m": -20.43,
+      "slug": "pharaoh-v3",
+      "methodology": {
+        "UserFees": "User pays fees on each swap.",
+        "Fees": "Fees are collected from users on each swap.",
+        "Revenue": "Revenue going to the protocol + Token holder Revenue.",
+        "ProtocolRevenue": "Revenue going to the protocol.",
+        "HoldersRevenue": "User fees are distributed among holders.",
+        "SupplySideRevenue": "Fees distributed to LPs (from gauged pools).",
+        "BribesRevenue": "Bribes are distributed among holders.",
+        "TokenTax": "xREX stakers instant exit penalty"
+      }
+    },
+    {
+      "name": "Jupiterz",
+      "displayName": "Jupiterz",
+      "logo": "https://icons.llamao.fi/icons/protocols/jupiterz.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Solana"
+      ],
+      "total24h": 35869097,
+      "total7d": 169038352,
+      "total30d": 940999525,
+      "totalAllTime": 30696094699,
+      "change1d": -0.18,
+      "change7d": 11.11,
+      "change1m": -41.66,
+      "slug": "jupiterz",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "ThalaSwap V3",
+      "displayName": "ThalaSwap V3",
+      "logo": "https://icons.llamao.fi/icons/protocols/thalaswap-v3.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Aptos"
+      ],
+      "total24h": 35823439,
+      "total7d": 171544970,
+      "total30d": 311805555,
+      "totalAllTime": 2059798410,
+      "change1d": 1.03,
+      "change7d": 172.59,
+      "change1m": 459.73,
+      "slug": "thalaswap-v3",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
+    },
+    {
+      "name": "Blackhole CLMM",
+      "displayName": "Blackhole CLMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/blackhole-clmm.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Avalanche"
+      ],
+      "total24h": 35032845,
+      "total7d": 167324215,
+      "total30d": 935664368,
+      "totalAllTime": 29661803222,
+      "change1d": 29.68,
+      "change7d": 8.36,
+      "change1m": -46.29,
+      "slug": "blackhole-clmm",
+      "methodology": {
+        "UserFees": "All swap fees paid by users.",
+        "Fees": "All swap fees paid by users.",
+        "Revenue": "All swap fees are revenue.",
+        "ProtocolRevenue": "Protocol makes no revenue.",
+        "HoldersRevenue": "All revenue is distributed to veBlack holders.",
+        "SupplySideRevenue": "No fees distributed to LPs."
+      }
+    },
+    {
+      "name": "Joe V2.2",
+      "displayName": "Joe V2.2",
+      "logo": "https://icons.llamao.fi/icons/protocols/joe-v2.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Avalanche",
+        "Arbitrum",
+        "Monad"
+      ],
+      "total24h": 34108491,
+      "total7d": 229268917,
+      "total30d": 1333694130,
+      "totalAllTime": 40794423339,
+      "change1d": -37.66,
+      "change7d": 35.58,
+      "change1m": -52.36,
+      "slug": "joe-v2.2",
+      "methodology": {
+        "UserFees": "Total swap fees typically range from 0.01% up to 0.8% of the total amount paid by users.",
+        "Fees": "Total swap fees typically range from 0.01% up to 0.8% of the total amount paid by users.",
+        "Revenue": "Share of amount of swap fees.",
+        "ProtocolRevenue": "No protocol fees.",
+        "HoldersRevenue": "All revenue distributed to sJOE stakers",
         "SupplySideRevenue": "Liquidity providers revenue"
       }
     },
@@ -1149,13 +1148,13 @@
         "Plasma",
         "Monad"
       ],
-      "total24h": 30921787,
-      "total7d": 258001221,
-      "total30d": 1374194800,
-      "totalAllTime": 24526765475,
-      "change1d": -25.85,
-      "change7d": -0.51,
-      "change1m": -19.99,
+      "total24h": 30599882,
+      "total7d": 232957420,
+      "total30d": 1342628574,
+      "totalAllTime": 24558492379,
+      "change1d": -39.93,
+      "change7d": -46.4,
+      "change1m": -51.9,
       "slug": "balancer-v3",
       "methodology": {
         "UserFees": "Fees earned from all the trades.",
@@ -1167,81 +1166,50 @@
       }
     },
     {
-      "name": "Chainflip AMM",
-      "displayName": "Chainflip AMM",
-      "logo": "https://icons.llamao.fi/icons/protocols/chainflip-amm.jpg",
-      "category": "Dexs",
+      "name": "Predict Fun",
+      "displayName": "Predict Fun",
+      "logo": "https://icons.llamao.fi/icons/protocols/predict-fun.jpg",
+      "category": "Prediction Market",
       "chains": [
-        "Chainflip"
+        "Blast",
+        "BSC"
       ],
-      "total24h": 29814020,
-      "total7d": 143168678,
-      "total30d": 395050189,
-      "totalAllTime": 7078842410,
-      "change1d": 23.43,
-      "change7d": 65.14,
-      "change1m": 755.16,
-      "slug": "chainflip-amm",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue",
-        "Volume": "Cumulative USD value of swaps executed on the chainflip protocol"
-      }
+      "total24h": 29955507,
+      "total7d": 88214476,
+      "total30d": 684566788,
+      "totalAllTime": 1763400284,
+      "change1d": 53.7,
+      "change7d": 47.97,
+      "change1m": 838.6,
+      "slug": "predict-fun",
+      "methodology": {}
     },
     {
-      "name": "Pharaoh V3",
-      "displayName": "Pharaoh V3",
-      "logo": "https://icons.llamao.fi/icons/protocols/pharaoh-v3.jpg",
-      "category": "Dexs",
+      "name": "Pendle",
+      "displayName": "Pendle",
+      "logo": "https://icons.llamao.fi/icons/protocols/pendle.jpg",
+      "category": "Yield",
       "chains": [
-        "Avalanche"
+        "Ethereum",
+        "Arbitrum",
+        "Mantle",
+        "BSC",
+        "OP Mainnet"
       ],
-      "total24h": 26783870,
-      "total7d": 161450085,
-      "total30d": 930619282,
-      "totalAllTime": 10543330950,
-      "change1d": -27.62,
-      "change7d": 37.02,
-      "change1m": 32.21,
-      "slug": "pharaoh-v3",
+      "total24h": 27326037,
+      "total7d": 162801571,
+      "total30d": 696389612,
+      "totalAllTime": 54399270331,
+      "change1d": -29.87,
+      "change7d": -6.71,
+      "change1m": 99.6,
+      "slug": "pendle",
       "methodology": {
-        "UserFees": "User pays fees on each swap.",
-        "Fees": "Fees are collected from users on each swap.",
-        "Revenue": "Revenue going to the protocol + Token holder Revenue.",
-        "ProtocolRevenue": "Revenue going to the protocol.",
-        "HoldersRevenue": "User fees are distributed among holders.",
-        "SupplySideRevenue": "Fees distributed to LPs (from gauged pools).",
-        "BribesRevenue": "Bribes are distributed among holders.",
-        "TokenTax": "xREX stakers instant exit penalty"
-      }
-    },
-    {
-      "name": "Aquifer",
-      "displayName": "Aquifer",
-      "logo": "https://icons.llamao.fi/icons/protocols/aquifer.jpg",
-      "category": "Dexs",
-      "chains": [
-        "Solana"
-      ],
-      "total24h": 24939799,
-      "total7d": 165180511,
-      "total30d": 956041305,
-      "totalAllTime": 12002403010,
-      "change1d": 3.22,
-      "change7d": -67.57,
-      "change1m": 170.1,
-      "slug": "aquifer",
-      "methodology": {
-        "UserFees": "Swap fees paid by users",
-        "Fees": "Swap fees paid by users",
-        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-        "ProtocolRevenue": "Percentage of swap fees going to treasury",
-        "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
+        "UserFees": "Pays management + performance fees",
+        "Fees": "Yield",
+        "Revenue": "Management + performance fees",
+        "ProtocolRevenue": "Gets management + performance fees",
+        "SupplySideRevenue": "Generated yield excluding protocol fees"
       }
     },
     {
@@ -1263,13 +1231,13 @@
         "Monad",
         "X Layer"
       ],
-      "total24h": 23122714,
-      "total7d": 161936728,
-      "total30d": 1016020789,
-      "totalAllTime": 605491338199,
-      "change1d": -23.18,
-      "change7d": 13.81,
-      "change1m": 356.73,
+      "total24h": 26098441,
+      "total7d": 157989874,
+      "total30d": 1031227213,
+      "totalAllTime": 605517436640,
+      "change1d": 12.87,
+      "change7d": -13.14,
+      "change1m": 139.61,
       "slug": "uniswap-v2",
       "methodology": {
         "UserFees": "User pays 0.3% fees on each swap.",
@@ -1281,47 +1249,29 @@
       }
     },
     {
-      "name": "Tristero Spot",
-      "displayName": "Tristero Spot",
-      "logo": "https://icons.llamao.fi/icons/protocols/tristero-spot.jpg",
+      "name": "Chainflip AMM",
+      "displayName": "Chainflip AMM",
+      "logo": "https://icons.llamao.fi/icons/protocols/chainflip-amm.jpg",
       "category": "Dexs",
       "chains": [
-        "Base",
-        "OP Mainnet",
-        "Ethereum",
-        "Avalanche",
-        "Linea",
-        "Arbitrum",
-        "Polygon",
-        "Unichain",
-        "Monad",
-        "Berachain",
-        "Sonic",
-        "Mode",
-        "Scroll",
-        "Gnosis",
-        "Ink",
-        "Abstract",
-        "Mantle",
-        "BOB",
-        "ApeChain",
-        "Ronin"
+        "Chainflip"
       ],
-      "total24h": 21776514,
-      "total7d": 481094065,
-      "total30d": 1642952217,
-      "totalAllTime": 6352054874,
-      "change1d": -79.8,
-      "change7d": -52.07,
-      "change1m": null,
-      "slug": "tristero-spot",
+      "total24h": 19581327,
+      "total7d": 138927426,
+      "total30d": 406332541,
+      "totalAllTime": 7092734737,
+      "change1d": -49.87,
+      "change7d": -30.97,
+      "change1m": 52.47,
+      "slug": "chainflip-amm",
       "methodology": {
         "UserFees": "Swap fees paid by users",
         "Fees": "Swap fees paid by users",
         "Revenue": "Percentage of swap fees going to treasury and/or token holders",
         "ProtocolRevenue": "Percentage of swap fees going to treasury",
         "HoldersRevenue": "Money going to governance token holders",
-        "SupplySideRevenue": "Liquidity providers revenue"
+        "SupplySideRevenue": "Liquidity providers revenue",
+        "Volume": "Cumulative USD value of swaps executed on the chainflip protocol"
       }
     },
     {
@@ -1332,13 +1282,13 @@
       "chains": [
         "BSC"
       ],
-      "total24h": 18687736,
-      "total7d": 111676217,
-      "total30d": 426882127,
-      "totalAllTime": 10677899861,
-      "change1d": 38.91,
-      "change7d": -1.87,
-      "change1m": 217.96,
+      "total24h": 19575160,
+      "total7d": 111988003,
+      "total30d": 440507916,
+      "totalAllTime": 10698343871,
+      "change1d": 0.09,
+      "change7d": 1.72,
+      "change1m": 230.06,
       "slug": "opinion",
       "methodology": {
         "Volume": "Opinion prediction market trading volume, excluding identified wash trading wallets",
@@ -1355,13 +1305,13 @@
       "chains": [
         "Thorchain"
       ],
-      "total24h": 18512468,
-      "total7d": 142611333,
-      "total30d": 1597305603,
-      "totalAllTime": 111933317544,
-      "change1d": -42.69,
-      "change7d": -46.95,
-      "change1m": -1.62,
+      "total24h": 19032022,
+      "total7d": 133857839,
+      "total30d": 1594646835,
+      "totalAllTime": 111952349566,
+      "change1d": 2.81,
+      "change7d": -31.5,
+      "change1m": -12.26,
       "slug": "thorchain-dex",
       "methodology": {
         "UserFees": "Swap fees paid by users",
@@ -1380,13 +1330,13 @@
       "chains": [
         "Off Chain"
       ],
-      "total24h": 16983999,
-      "total7d": 67678200,
-      "total30d": 297444181,
-      "totalAllTime": 965633186,
-      "change1d": 22.66,
+      "total24h": 18262246,
+      "total7d": 85940446,
+      "total30d": 301522033,
+      "totalAllTime": 983895432,
+      "change1d": 7.53,
       "change7d": null,
-      "change1m": 21.15,
+      "change1m": 28.75,
       "slug": "polymarket-us",
       "methodology": {
         "Volume": "The total volume of trades on Polymarket US",
@@ -1397,28 +1347,53 @@
         "ProtocolRevenue": "All the revenue goes to protocol",
         "SupplySideRevenue": "Part of fees distributed to traders"
       }
+    },
+    {
+      "name": "O2 Exchange",
+      "displayName": "O2 Exchange",
+      "logo": "https://icons.llamao.fi/icons/protocols/o2-exchange.jpg",
+      "category": "Dexs",
+      "chains": [
+        "Fuel Ignition"
+      ],
+      "total24h": 16557480,
+      "total7d": 53784324,
+      "total30d": 254361140,
+      "totalAllTime": 988308607,
+      "change1d": 460.56,
+      "change7d": -27.51,
+      "change1m": 18.64,
+      "slug": "o2-exchange",
+      "methodology": {
+        "UserFees": "Swap fees paid by users",
+        "Fees": "Swap fees paid by users",
+        "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+        "ProtocolRevenue": "Percentage of swap fees going to treasury",
+        "HoldersRevenue": "Money going to governance token holders",
+        "SupplySideRevenue": "Liquidity providers revenue"
+      }
     }
   ],
   "summary": {
     "top1_name": "Uniswap V4",
-    "top1_24h": 749752387,
+    "top1_24h": 917626459,
     "top3": [
       {
         "name": "Uniswap V4",
-        "volume": 749752387,
-        "change": -10.21
-      },
-      {
-        "name": "Aerodrome Slipstream",
-        "volume": 564620612,
-        "change": -0.82
+        "volume": 917626459,
+        "change": 27.39
       },
       {
         "name": "PancakeSwap AMM V3",
-        "volume": 479624616,
-        "change": -41.16
+        "volume": 636306132,
+        "change": 32.67
+      },
+      {
+        "name": "Aerodrome Slipstream",
+        "volume": 468724388,
+        "change": 4.83
       }
     ],
-    "total_24h_all": 6218989255
+    "total_24h_all": 6950693809
   }
 }
